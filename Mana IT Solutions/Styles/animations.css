@@ -1,0 +1,130 @@
+@keyframes animateHeaderLogo {
+    from {
+        transform: translateX(-150%);
+        filter: blur(10px);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes animateHeaderButtons {
+    from {
+        transform: translateY(-150%);
+        filter: blur(10px);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes animateHeaderHamburgerMenu {
+    from {
+        transform: translateX(150%);
+        filter: blur(10px);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes animateFromLeft {
+    from {
+        transform: translateX(-100%);
+        filter: blur(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes animateAbotUsButton {
+    from {
+        transform: translateX(-150%);
+        filter: blur(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes animateAbotUsImage {
+    from {
+        transform: translateX(10%);
+        filter: blur(10px);
+        filter: blur(10px);
+        opacity: 0;
+    }
+}
+
+@keyframes animateFromCenter {
+    from {
+        transform: translateY(30%);
+        filter: blur(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes animateAboutUsButtonFromCenter {
+    from {
+        transform: translateY(70%) translateX(-50%);
+        filter: blur(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0%) translateX(-50%);
+    }
+}
+
+@keyframes animatePrimaryButtonFromCenter {
+    from {
+        transform: translateY(70%) rotateX(90deg);
+        filter: blur(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes animateServiceCards {
+    from {
+        transform: translateY(40%);
+        opacity: 0;
+        scale: 0.5;
+    }
+}
+
+@keyframes animateContactSection {
+    from {
+        gap: 10em;
+    }
+}
+
+@keyframes animateFooterElementsFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-10%);
+        filter: blur(10px);
+    }
+}
+
+@keyframes animateFooterElementsFromCenter {
+    from {
+        opacity: 0;
+        transform: translateY(10%);
+        filter: blur(10px);
+    }
+}
+
+@keyframes animaeOpacity {
+    from {
+        opacity: 0;
+        filter: blur(5px);
+    }
+}

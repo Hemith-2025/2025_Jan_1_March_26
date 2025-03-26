@@ -1,0 +1,94 @@
+section#HeroSection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    min-width: 100%;
+    overflow: hidden;
+}
+section#HeroSection img {
+    position: absolute;
+    width: 110%;
+    filter: brightness(0.5) blur(5px);
+}
+section#HeroSection h1 {
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    color: var(--blue);
+    font-size: 3em;
+    animation: animateFromCenter 1s ease;
+}
+
+section#Aboutus {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    height: fit-content;
+    width: 100%;
+    padding: 3em 5em;
+}
+section#Aboutus .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1em;
+    height: fit-content;
+    width: 50%;
+    padding: 2em;
+}
+section#Aboutus .content h1 {
+    animation: animateFromLeft 1s ease;
+}
+section#Aboutus .content p {
+    z-index: 1;
+    animation: animateFromLeft 1s ease;
+}
+section#Aboutus .Image {
+    display: flex;
+    height: 100%;
+    pointer-events: none;
+    animation: animateAbotUsImage 1s ease;
+}
+section#Aboutus .Image img {
+    height: 100%;
+    width: 100%;
+    border-radius: 1em;
+}
+
+@media (max-width:1080px) {
+    /* Home */
+    section#Aboutus {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+    section#Aboutus .content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 1em;
+        height: 100%;
+        width: 100%;
+    }
+    section#Home .content h1 {
+        text-align: center;
+        width: 100%;
+        animation: animateFromCenter 1s ease;
+    }
+    section#Aboutus .content p {
+        text-align: center;
+        animation: animateFromCenter 1s ease;
+    }
+    section#Aboutus .Image {
+        display: none;
+    }
+    section#Aboutus .Image img {
+        display: none;
+    }
+}

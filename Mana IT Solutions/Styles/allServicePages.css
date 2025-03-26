@@ -1,0 +1,381 @@
+/* Hero Section */
+section#HeroSection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    min-width: 100%;
+    overflow: hidden;
+}
+section#HeroSection img {
+    position: absolute;
+    width: 110%;
+    filter: brightness(0.5) blur(5px);
+}
+section#HeroSection h1 {
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    color: var(--blue);
+    font-size: 3em;
+}
+
+/* MPS Page */
+section#MPSPageSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 3em 5em;
+    gap: 1em;
+}
+section#MPSPageSection p {
+    width: 100%;
+    font-size: 1.3em;
+}
+section#MPSPageSection .content {
+    display: flex;
+    gap: 1em;
+    height: 100%;
+    width: 100%;
+}
+section#MPSPageSection ul {
+    height: 100%;
+    width: 50%;
+}
+section#MPSPageSection ul li {
+    height: 100%;
+    font-size: 1.1em;
+}
+section#MPSPageSection h2 {
+    width: 100%;
+    color: var(--blue);
+    text-align: center;
+}
+section#MPSPageSection .contentImages {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 2em;
+    height: 100%;
+    width: 100%;
+}
+section#MPSPageSection .contentImages .contentImage  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 1em;
+    overflow: hidden;
+}
+section#MPSPageSection .contentImages .contentImage img  {
+    width: 100%;
+}
+
+@media (max-width:1240px) {
+    section#MPSPageSection p {
+        text-align: center;
+    }
+    section#MPSPageSection ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2em;
+        height: 100%;
+        width: 100%;
+    }
+    section#MPSPageSection ul li {
+        width: 100%;
+    }
+    section#MPSPageSection .content .contentImages .contentImage {
+        display: none;
+        width: 0;
+    }
+}
+
+/* AMC Page */
+section#AMCPageSection {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 35% 32.5% 32.5%;
+    grid-gap: 1em;
+    height: fit-content;
+    width: 100%;
+    padding: 3em 5em;
+}
+section#AMCPageSection p {
+    text-align: center;
+    font-size: 1.3em;
+    padding: 0 1em;
+}
+section#AMCPageSection .imageBox {
+    height: 300px;
+    width: 100%;
+    border-radius: 1em;
+    overflow: hidden;
+}
+section#AMCPageSection .imageBox.imageBox1 {
+    background: url("Images/AMC-Section-Image-1.jpg") center no-repeat;
+    background-size: cover;
+}
+section#AMCPageSection .imageBox.imageBox2 {
+    background: url("Images/AMC-Section-Image-2.jpg") center no-repeat;
+    background-size: cover;
+}
+@media (max-width:1200px) {
+    section#AMCPageSection {
+        display: grid;
+        justify-content: center;
+        place-items: center;
+        grid-template-columns: 90%;
+    }
+}
+
+/* FMS Page */
+section#FMSPageSection {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    height: fit-content;
+    width: 100%;
+    padding: 3em 5em;
+}
+section#FMSPageSection .paragraphs {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1em;
+    font-size: 1.3em;
+    width: 60%;
+}
+section#FMSPageSection .Image {
+    display: flex;
+    height: 600px;
+    width: 40%;
+    border-radius: 1em;
+    overflow: hidden;
+    background: url("Images/FMS-Section-Image.jpg") center no-repeat;
+    background-size: cover;
+    box-shadow: 0 0.5em 1em #00000050;
+}
+
+@media (max-width:1440px) {
+    section#FMSPageSection .paragraphs {
+        width: 100%;
+        text-align: center;
+    }
+    section#FMSPageSection .Image {
+        display: none;
+    }
+}
+
+/* DMS Page */
+section#HeroSection h1 {
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    color: var(--blue);
+    font-size: 3em;
+}
+
+section#DMSPageSection {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    height: fit-content;
+    width: 100%;
+    padding: 3em 5em;
+}
+section#DMSPageSection .content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5em;
+    height: fit-content;
+    width: 60%;
+}
+section#DMSPageSection .content p {
+    font-size: 1.3em;
+}
+section#DMSPageSection .content ul li {
+    font-size: 1.1em;
+}
+section#DMSPageSection .Image {
+    height: 400px;
+    width: 40%;
+    border-radius: 1em;
+    overflow: hidden;
+    background: url("Images/DMS-Section-Image.jpg") center no-repeat;
+    background-size: cover;
+}
+
+@media (max-width:1200px) {
+    section#DMSPageSection .Image {
+        display: none;
+    }
+    section#DMSPageSection .content {
+        width: 100%;
+    }
+    section#DMSPageSection .content p {
+        text-align: center;
+    }
+}
+
+/* Display Solutions Page */
+section#DisplaySolutionsPageSection {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    height: fit-content;
+    width: 100%;
+    padding: 3em 5em;
+}
+
+section#DisplaySolutionsPageSection p {
+    font-size: 1.3em;
+    height: fit-content;
+    width: 50%;
+}
+
+section#DisplaySolutionsPageSection .Image {
+    height: 400px;
+    width: 50%;
+    border-radius: 1em;
+    background: url("Images/Display-Solution-Section-Image.jpg") center no-repeat;
+    background-size: cover;
+}
+
+@media (max-width:1024px) {
+    section#DisplaySolutionsPageSection p {
+        font-size: 1.3em;
+        text-align: center;
+        width: 1000%;
+    }
+    section#DisplaySolutionsPageSection .Image {
+        display: none;
+    }
+}
+
+/* Networking Page */
+section#NetworkingPageSection {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    padding: 3em 5em;
+}
+section#NetworkingPageSection .content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5em;
+    height: fit-content;
+    width: 55%;
+}
+section#NetworkingPageSection .content p {
+    font-size: 1.3em;
+}
+section#NetworkingPageSection .Image {
+    height: 400px;
+    width: 45%;
+    border-radius: 1em;
+    overflow: hidden;
+    background: url("Images/Networking-Section-Image.jpg") center no-repeat;
+    background-size: cover;
+}
+
+@media (max-width:1220px) {
+    section#NetworkingPageSection .content {
+        gap: 1em;
+        width: 100%;
+    }
+    section#NetworkingPageSection .content p {
+        text-align: center;
+    }
+    section#NetworkingPageSection .Image {
+        display: none;
+    }
+}
+
+/* CCTV Page */
+section#CCTVSolutionsPageSection {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    padding: 3em 5em;
+}
+section#CCTVSolutionsPageSection .content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5em;
+    height: fit-content;
+    width: 55%;
+}
+section#CCTVSolutionsPageSection .content p {
+    font-size: 1.3em;
+}
+section#CCTVSolutionsPageSection .Image {
+    height: 400px;
+    width: 45%;
+    border-radius: 1em;
+    overflow: hidden;
+    background: url("Images/CCTV-Solutions-Section-Image.jpg") center no-repeat;
+    background-size: cover;
+}
+
+@media (max-width:1220px) {
+    section#CCTVSolutionsPageSection .content {
+        gap: 1em;
+        width: 100%;
+    }
+    section#CCTVSolutionsPageSection .content p {
+        text-align: center;
+    }
+    section#CCTVSolutionsPageSection .Image {
+        display: none;
+    }
+}
+
+/* Video Conferencing Solutions Page */
+section#VCSolutionsPageSection {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    padding: 3em 5em;
+}
+section#VCSolutionsPageSection .content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5em;
+    height: fit-content;
+    width: 55%;
+}
+section#VCSolutionsPageSection .content p {
+    font-size: 1.3em;
+}
+section#VCSolutionsPageSection .Image {
+    height: 400px;
+    width: 45%;
+    border-radius: 1em;
+    overflow: hidden;
+    background: url("Images/VC-Solutions-Section-Image.jpg") center no-repeat;
+    background-size: cover;
+}
+
+@media (max-width:1220px) {
+    section#VCSolutionsPageSection .content {
+        gap: 1em;
+        width: 100%;
+    }
+    section#VCSolutionsPageSection .content p {
+        text-align: center;
+    }
+    section#VCSolutionsPageSection .Image {
+        display: none;
+    }
+}

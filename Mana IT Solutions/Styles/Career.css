@@ -1,0 +1,201 @@
+/* Hero Section */
+section#HeroSection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    min-width: 100%;
+    overflow: hidden;
+}
+section#HeroSection img {
+    position: absolute;
+    width: 110%;
+    filter: brightness(0.5) blur(5px);
+}
+section#HeroSection h1 {
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    color: var(--blue);
+    font-size: 3em;
+}
+
+section#Career {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    height: 100%;
+    width: 100%;
+    padding: 3em 5em;
+}
+section#Career .accordions {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.accordions .accordionButtons {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    background: lightgray;
+    overflow: hidden;
+}
+.accordions .accordionButtons button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 60px;
+    width: 100%;
+    border-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border: none;
+    outline-color: var(--blue);
+    background: transparent;
+    cursor: pointer;
+}
+.accordions .accordionButtons button.accordionButtonActive {
+    border-radius: 0;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    outline-color: var(--blue);
+    background: #e8e8e8;
+}
+.accordions .accordionContentCover {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    padding: 1em 2em;
+    background: #e8e8e8;
+    overflow: hidden;
+}
+.accordionContentCover .accordionFirstContent {
+    position: relative;
+    transform: translateX(-20%);
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(5px);
+}
+.accordionContentCover .accordionFirstContent.accordionContentActive {
+    position: relative;
+    transform: translateX(0%);
+    opacity: 1;
+    pointer-events: all;
+    filter: blur(0px);
+}
+.accordionContentCover .accordionSecondContent {
+    position: absolute;
+    top: 1em;
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(5px);
+}
+.accordionContentCover .accordionSecondContent.accordionContentActive {
+    transform: translateX(0%);
+    opacity: 1;
+    pointer-events: all;
+    filter: blur(0px);
+}
+.accordionContentCover .accordionThirdContent {
+    position: absolute;
+    top: 1em;
+    transform: translateX(20%);
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(5px);
+}
+.accordionContentCover .accordionThirdContent.accordionContentActive {
+    transform: translateX(0%);
+    opacity: 1;
+    pointer-events: all;
+    filter: blur(0px);
+}
+.accordionContentCover .accordionFirstContent.accordionContentActive ~ .accordionSecondContent {
+    transform: translateX(20%);
+}
+.accordionContentCover .accordionThirdContent.accordionContentActive ~ .accordionSecondContent {
+    transform: translateX(-20%);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 1.5em;
+    padding: 1em;
+    box-shadow: 0 0.5em 1em #00000050;
+}
+form fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    height: fit-content;
+    width: 100%;
+    border: none;
+    font-size: 2em;
+}
+fieldset input,
+fieldset textarea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--blue);
+    outline: none;
+    height: fit-content;
+    width: 480px;
+    border-radius: 1em;
+    padding: 0.8em 1.2em;
+    border: 2px solid transparent;
+    background-color: white;
+}
+fieldset textarea {
+    height: 200px;
+}
+fieldset input:focus,
+fieldset textarea:focus {
+    border: 2px solid var(--blue);
+}
+input[type="submit"] {
+    height: fit-content;
+    width: 480px;
+    padding: 1.1em 2em;
+    outline: none;
+    border-radius: 1em;
+    color: var(--blue);
+    background: transparent;
+    border: 2px solid var(--blue);
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    color: white;
+    background: var(--blue);
+    border: 2px solid var(--blue);
+    box-shadow: 0 0.5em 1em #00000050;
+}
+
+@media (max-width:726px) {
+    form {
+        width: 100%;
+    }
+    fieldset input,
+    fieldset textarea {
+        width: 100%;
+    }
+    input[type="submit"] {
+        width: 100%;
+    }
+}

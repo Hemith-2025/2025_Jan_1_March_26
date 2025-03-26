@@ -1,0 +1,429 @@
+/* Main */
+:root {
+    --blue: #02B4FE;
+    --orange: #FE6518;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    transition: all 0.2s;
+}
+
+/* HTML */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Body */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin: 110px 0 0;
+    overflow: visible;
+    overflow-x: hidden;
+}
+body.bodyScrolled header {
+    top: -100%;
+}
+
+/* Selection */
+::selection {
+    color: white;
+    background-color: var(--blue);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    height: 14px;
+    width: 14px;
+    background-color: white;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg , var(--blue) , var(--orange));
+    border-radius: 7px;
+    border: 3px solid white;
+}
+
+/* Anchor tag */
+a {
+    text-decoration: none;
+    text-wrap: nowrap;
+}
+
+/* Button - Primary */
+.button-Primary  {
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    color: var(--blue);
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.button-Primary:hover  {
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+    padding: 0.5em 1em;
+    color: white;
+    background-color: var(--blue);
+}
+/* Button - Secondary */
+.button-Secondary  {
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+    padding: 0.5em 1em;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.button-Secondary:hover  {
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+    padding: 0.5em 1em;
+    color: var(--orange);
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: 0.3s;
+}
+.headerCover {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    border-radius: 0.7em;
+    padding: 0 20px;
+    backdrop-filter: blur(50px);
+}
+.headerCover .Logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    animation: animateHeaderLogo 1s ease;
+}
+.headerCover .Logo img {
+    height: 100%;
+    width: 100%;
+    filter: drop-shadow(0 0 15px #00000050);
+}
+.headerCover .buttons {
+    display: flex;
+    align-items: center;
+    animation: animateHeaderButtons 1s ease;
+}
+.headerCover .buttons .navigationButtons {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 0.5em;
+}
+.navigationButtons .navigationDropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    background-color: transparent;
+}
+.navigationDropdown .navigationDropdownButton {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 0.6em;
+    height: 100%;
+    width: fit-content;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.07em;
+    color: var(--blue);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.buttons .navigationButtons .navigationDropdownButtonActive {
+    color: white;
+    background-color: var(--blue);
+}
+.navigationButtons .navigationDropdown .navigationDropdownButton:hover {
+    padding: 0.5em 1em;
+    color: white;
+    background-color: var(--blue);
+}
+.navigationDropdownButton .caret {
+    height: 0;
+    width: 0;
+    border-top: 8px solid var(--blue);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    transition: 1s , rotate 0.3s;
+}
+.navigationDropdownButton:hover .caret {
+    border-top: 8px solid white;
+}
+.navigationDropdownButtonActive .caret {
+    rotate: 90deg;
+    border-top: 8px solid white;
+}
+.navigationDropdownMenu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    backdrop-filter: blur(20px);
+    background-color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+.navigationDropdownMenuActive {
+    position: absolute;
+    top: 50px;
+    opacity: 1;
+    pointer-events: all;
+    box-shadow: 0 0.5em 1em #00000050;
+}
+.navigationDropdownMenu a {
+    height: fit-content;
+    width: 100%;
+    border-radius: 0.5em;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 0.5em 1em;
+    background-color: white;
+    color: var(--orange);
+}
+.navigationDropdownMenu a:hover {
+    background-color: var(--orange);
+    color: white;
+}
+.headerCover .headerHamburgerMenu {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    animation: animateHeaderHamburgerMenu 1s ease;
+}
+.hamburgerMenuButton {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 0.5em;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.hamburgerMenuButton .Line {
+    position: absolute;
+    height: 5px;
+    width: 80%;
+    border-radius: 3em;
+    background-color: var(--blue);
+}
+.hamburgerMenuButton .Line1 {
+    top: 7px;
+    transform: translateY(0%);
+}
+.hamburgerMenuButton .Line2 {
+    width: 80%;
+}
+.hamburgerMenuButton .Line3 {
+    bottom: 7px;
+    transform: translateY(0%);
+    rotate: 0deg;
+}
+.hamburgerMenuButtonActive .Line1 {
+    top: 18px;
+    rotate: 45deg;
+}
+.hamburgerMenuButtonActive .Line2 {
+    width: 0%;
+}
+.hamburgerMenuButtonActive .Line3 {
+    bottom: 18px;
+    rotate: -45deg;
+}
+.headerHamburgerMenu .hamburgerMenuMenu {
+    position: absolute;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    padding: 1em;
+    background-color: white;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 1em;
+    box-shadow: 0 0.5em 1em #00000050;
+    opacity: 0;
+    pointer-events: none;
+}
+.headerHamburgerMenu .hamburgerMenuMenuActive {
+    top: 50px;
+    opacity: 1;
+    pointer-events: all;
+}
+.headerHamburgerMenu .hamburgerMenuMenu a {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+.headerHamburgerMenu .hamburgerMenuMenu a:hover {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    background-color: var(--orange);
+}
+
+/* Section */
+h1.sectionHeading {
+    font-size: 2em;
+    color: var(--orange);
+    z-index: 1;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3c3939;
+    height: fit-content;
+    width: 100%;
+}
+footer .footerCover {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 1.4em;
+    padding: 5em 2em 0 2em;
+}
+.footerCover h1 {
+    color: var(--blue);
+}
+.footerCover .logoAndButtons {
+    height: 200px;
+    width: 200px;
+    animation: animateFooterElementsFromLeft 1s ease;
+}
+.footerCover .logoAndButtons img {
+    height: 200px;
+    width: 200px;
+}
+.footerCover .quickLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    animation: animateFooterElementsFromLeft 1s ease;
+}
+.footerCover .reachUs {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 1em;
+    height: 300px;
+    width: 100%;
+    animation: animateFooterElementsFromLeft 1s ease;
+}
+.reachUs h1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.reachUs :is(.address , .phNo , .emailID) {
+    color: white;
+}
+footer .copyrights {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1em;
+    background-color: #242424;
+    color: #7a7a7a;
+}
+
+/* Making Responsive */
+@media (max-width:840px) {
+    .headerCover .buttons {
+        display: none;
+    }
+    .headerCover .headerHamburgerMenu {
+        display: flex;
+    }
+}
+
+@media (max-width:1024px) {
+    .footerCover {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+    }
+    .footerCover :is(.logoAndButtons , .quickLinks , .reachUs) {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        animation: animateFooterElementsFromCenter 1s ease;
+    }
+    .footerCover .reachUs {
+        padding-top: 3.5em;
+    }
+    .footerCover .reachUs .address {
+        padding: 0 7em;
+    }
+    .reachUs h1 {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width:1080px) {
+    h1.sectionHeading {
+        text-align: center;
+        width: 100%;
+    }
+}

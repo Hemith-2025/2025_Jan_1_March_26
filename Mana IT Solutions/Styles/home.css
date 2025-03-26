@@ -1,0 +1,226 @@
+/* Home */
+section#Home {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    height: fit-content;
+    width: 100%;
+    padding: 3em 5em;
+}
+section#Home .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1em;
+    height: fit-content;
+    width: 50%;
+    padding: 2em;
+}
+section#Home .content h1 {
+    animation: animateFromLeft 1s ease;
+}
+section#Home .content p {
+    z-index: 1;
+    animation: animateFromLeft 1s ease;
+}
+section#Home .content a {
+    z-index: 1;
+    animation: animateAbotUsButton 1s ease;
+}
+section#Home .Image {
+    display: flex;
+    height: 100%;
+    pointer-events: none;
+    animation: animateAbotUsImage 1s ease;
+}
+section#Home .Image img {
+    height: 100%;
+    width: 100%;
+    border-radius: 1em;
+}
+section#Home a {
+    margin: 0 1em;
+}
+
+/* Services */
+section#Services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 1em;
+    height: fit-content;
+    width: 100%;
+    margin-bottom: 3em;
+}
+section#Services .serviceCardsCover {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    width: 100%;
+    padding: 0 5em 5em 3em;
+    grid-gap: 1em;
+}
+.serviceCardsCover .serviceCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 1em;
+    overflow: hidden;
+    cursor: pointer;
+    animation: animateServiceCards 0.5s ease;
+}
+.serviceCardsCover .serviceCard:hover {
+    box-shadow: 0 0.5em 1em #00000050;
+}
+.serviceCardsCover .serviceCard.moreServicesCard {
+    display: none;
+}
+.serviceCardsCover .serviceCard .image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-wrap: wrap;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 1em;
+    object-fit: cover;
+    overflow: hidden;
+    background: var(--bg) center;
+    background-size: cover;
+}
+.serviceCardsCover .serviceCard .image p {
+    z-index: 2;
+}
+.serviceCardsCover .serviceCard:hover .image p {
+    opacity: 0;
+    filter: blur(5px);
+}
+.serviceCardsCover .serviceCard .image .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color: #00000099;
+}
+.serviceCardsCover .serviceCard:hover .image .overlay {
+    background-color: #00000000;
+}
+.serviceCard h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--blue);
+    height: 0;
+    width: 100%;
+    filter: blur(5px);
+    text-align: center;
+    overflow: hidden;
+    transform-origin: top;
+    scale: 2;
+}
+.serviceCardsCover .serviceCard:hover h4 {
+    height: 60px;
+    width: 100%;
+    filter: blur(0px);
+    scale: 1;
+}
+section#Services .moreServicesButton {
+    animation: animatePrimaryButtonFromCenter 1s ease;
+}
+
+/* Contact */
+section#Contact {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: 2.6em 0;
+    background: linear-gradient(to right , var(--blue) , var(--orange));
+    animation: animateContactSection 1s ease;
+}
+section#Contact .contactText {
+    color: white;
+}
+
+@media (max-width:1080px) {
+    /* Home */
+    section#Home {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+    section#Home .content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 1em;
+        height: 100%;
+        width: 100%;
+    }
+    section#Home .content h1 {
+        text-align: center;
+        width: 100%;
+        animation: animateFromCenter 1s ease;
+    }
+    section#Home .content p {
+        text-align: center;
+        animation: animateFromCenter 1s ease;
+    }
+    section#Home .content a {
+        position: relative;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        animation: animateAboutUsButtonFromCenter 1s ease;
+    }
+    section#Home .Image {
+        display: none;
+    }
+    section#Home .Image img {
+        display: none;
+    }
+
+    /* Services */
+    section#Services .serviceCardsCover {
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        height: 100%;
+        width: 100%;
+        padding: 0 0 5em 5em;
+        grid-gap: 1em;
+    }
+    .serviceCardsCover .serviceCard.moreServicesCard {
+        display: flex;
+    }
+    section#Services .moreServicesButton {
+        display: none;
+    }
+}
+
+@media (max-width:1040px) {
+    section#Services .serviceCardsCover {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        padding: 0 5em;
+        grid-gap: 1em;
+    }
+    section#Services .serviceCardsCover .serviceCard.VCSolutions {
+        display: none;
+    }
+    .serviceCardsCover .serviceCard.moreServicesCard {
+        display: flex;
+    }
+}
