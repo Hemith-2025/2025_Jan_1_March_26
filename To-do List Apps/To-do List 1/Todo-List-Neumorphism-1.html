@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List (neumorphism) | 1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cardBg: white;
+            --theme: blueviolet;
+            --cardWrapper-gap: 1em;
+            --cards: 4;
+            --card-height: 450px;
+            --card-width: 300px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins;
+            transition: 0.3s;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: var(--bg);
+        }
+        .TodoList {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            padding: 40px 30px 70px;
+            background: var(--bg);
+            height: 90vh;
+            width: 90%;
+            border-radius: 2em;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .TodoList .top {
+            height: fit-content;
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .TodoList .top h1 {
+            color: var(--theme);
+            margin-bottom: 0.3em;
+        }
+        .TodoList .top button {
+            height: 50px;
+            width: 100px;
+            color: var(--theme);
+            background: transparent;
+            border: 2px solid var(--theme);
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .userInputBox {
+            display: flex;
+            align-items: center;
+            height: 60px;
+            width: 90%;
+            border-radius: 2em;
+            padding-left: 2em;
+            background: transparent;
+            margin-bottom: 1em;
+            box-shadow: var(--shadow);
+        }
+        .userInputBox input {
+            height: 100%;
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1.3em;
+            color: var(--theme);
+        }
+        .userInputBox button#clearInputButton {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+        }
+        .userInputBox button#clearInputButton:hover {
+            background: transparent;
+        }
+        .userInputBox button#clearInputButton .Line {
+            position: absolute;
+            height: 5px;
+            width: 60%;
+            border-radius: 5px;
+            background: var(--theme);
+        }
+        .userInputBox button#clearInputButton .Line1 {
+            rotate: -45deg;
+        }
+        .userInputBox button#clearInputButton .Line2 {
+            rotate: 45deg;
+        }
+        .userInputBox button {
+            height: 100%;
+            width: fit-content;
+            border-radius: 2.5em;
+            text-wrap: nowrap;
+            padding: 0 2em;
+            color: var(--theme);
+            background: transparent;
+            border: none;
+            outline: none;
+            border: 3px solid var(--theme);
+            cursor: pointer;
+        }
+        .userInputBox button:hover {
+            color: white;
+            background: var(--theme);
+        }
+        .TodoList h2 {
+            display: none;
+            color: var(--theme);
+            margin-bottom: 0.3em;
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            gap: 1.5em;
+            height: 80%;
+            width: 90%;
+            border-radius: 1.8em;
+            padding: 1.5em;
+            background-color: transparent;
+            list-style: none;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+        ul::-webkit-scrollbar {
+            position: relative;
+            appearance: none;
+            background: transparent;
+            width: 14px;
+            height: 14px;
+        }
+        ul::-webkit-scrollbar-thumb {
+            background: var(--theme);
+            border-radius: 7em;
+            border: 3px solid #e8e8e8;
+        }
+        ul::-webkit-scrollbar-track {
+            margin: 2em 0;
+        }
+        ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: fit-content;
+            width: 100%;
+            border-radius: 1em;
+            padding: 1.3em 1.5em;
+            background: #e8e8e8;
+            box-shadow: var(--shadow);
+        }
+        li .checkButtonAndTaskName {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+        li button.checkButton {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            border: 2px solid var(--theme);
+            cursor: pointer;
+        }
+        li.task .checkButtonAndTaskName div {
+            text-decoration: none;
+            font-size: 1.3em;
+            color: #181818;
+        }
+        li.task.taskChecked .checkButtonAndTaskName div {
+            text-decoration: line-through;
+        }
+        li.task.taskChecked button.checkButton {
+            background: var(--theme);
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            border: 2px solid var(--theme);
+        }
+        li .deleteTaskButton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 30px;
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        li .deleteTaskButton .fa-trash {
+            scale: 2;
+        }
+        li .deleteTaskButton:hover .fa-trash {
+            scale: 2.5;
+            color: rgb(255, 40, 40);
+            filter: drop-shadow(0 0 1em);
+        }
+        .TodoList .alert {
+            position: absolute;
+            bottom: 1.2em;
+            right: -20em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-wrap: nowrap;
+            text-align: right;
+            height: fit-content;
+            width: fit-content;
+            border-radius: 1em;
+            padding: 1em 2em;
+            box-shadow: var(--shadow);
+            background: #e8e8e8;
+            color: var(--theme);
+            border: 2px solid var(--theme);
+            pointer-events: none;
+        }
+        .TodoList .alertShow {
+            position: absolute;
+            bottom: 1.2em;
+            right: 2.1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-wrap: nowrap;
+            text-align: right;
+            height: fit-content;
+            width: fit-content;
+            border-radius: 1em;
+            padding: 1em 2em;
+            background: transparent;
+            color: var(--theme);
+            border: 2px solid var(--theme);
+            pointer-events: none;
+        }
+        body.light {
+            --bg: #e8e8e8;
+            --shadow: 0 0.5em 1em #00000050;
+        }
+        body.dark {
+            --bg: #121212;
+            --shadow: 0 0.5em 1em #00000070;
+        }
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #e8e8e8;
+                --shadow: 0 0.5em 1em #00000050;
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --shadow: 0 0.5em 1em #00000070;
+            }
+        }
+    </style>
+</head>
+<body class="light">
+    <div class="TodoList">
+        <div class="top">
+            <h1>To-do List</h1>
+            <button id="themeToggle">Dark</button>
+        </div>
+        <div class="userInputBox">
+            <input type="text" placeholder="Enter Your Task Here" autocomplete="off" name="userTaskInput" id="userTaskInput">
+            <button id="clearInputButton" title="Clear">
+                <div class="Line Line1"></div>
+                <div class="Line Line2"></div>
+            </button>
+            <button id="addTaskButton">Add Task</button>
+        </div>
+        <h2 class="taskListHeading">Your Tasks</h2>
+        <ul id="tasksWrapper"></ul>
+        <div class="alert">
+            Please Type your Task!
+        </div>
+    </div>
+    <script>
+        const body = document.body;
+        const themeToggle = document.getElementById("themeToggle");
+        const userTaskInput = document.getElementById("userTaskInput");
+        const clearInputButton = document.getElementById("clearInputButton");
+        const addTaskButton = document.getElementById("addTaskButton");
+        const taskListHeading = document.querySelector('h2');
+        const tasksWrapper = document.getElementById("tasksWrapper");
+        const tasks = tasksWrapper.querySelectorAll('.task');
+        const alert = document.querySelector('.alert');
+
+        function toggleTheme(){
+            if (body.classList.contains('light')) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+            }
+            else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+            }
+        }
+        themeToggle.addEventListener("click" , toggleTheme);
+
+        function clearInputValue(){
+            userTaskInput.value = "";
+        }
+        clearInputButton.addEventListener("click" , clearInputValue);
+        
+        addTaskButton.addEventListener("click" , () => {
+            userTaskInputValue = userTaskInput.value;
+
+            alert.classList.remove('alertShow');
+
+            if (userTaskInputValue === ''){
+                alert.classList.toggle('alertShow');
+            }
+            else {
+
+                userTaskInputValue = '';
+
+                // Creating a list Box
+                let task = document.createElement("li");
+                task.setAttribute('class','task');
+                tasksWrapper.appendChild(task);
+
+                // Creating a box for Check button and Task Name
+                let checkButtonAndTaskNameBox = document.createElement("div");
+                checkButtonAndTaskNameBox.setAttribute('class','checkButtonAndTaskName');
+                task.appendChild(checkButtonAndTaskNameBox);
+
+                let checkButton = document.createElement("button");
+                checkButton.setAttribute('id','checkButton');
+                checkButton.setAttribute('class','checkButton');
+                checkButtonAndTaskNameBox.appendChild(checkButton);
+
+
+                let taskName = document.createElement("div");
+                taskName.setAttribute('class','taskName');
+                checkButtonAndTaskNameBox.appendChild(taskName);
+                taskName.textContent = userTaskInput.value;
+
+                // Creating Delete task button
+                let deleteTaskButton = document.createElement("button");
+                deleteTaskButton.setAttribute('id','deleteTaskButton');
+                deleteTaskButton.setAttribute('class','deleteTaskButton');
+                task.appendChild(deleteTaskButton);
+
+                let trash = document.createElement("i");
+                trash.setAttribute('class','fa fa-trash');
+                deleteTaskButton.appendChild(trash);
+
+                checkButton.addEventListener("click" , () => {
+                    task.classList.toggle('taskChecked');
+                });
+
+                function deleteTask(){
+                    deleteTaskButton.parentElement.style.display = "none";
+                }
+                deleteTaskButton.addEventListener("click" , deleteTask);
+                
+            }
+
+        });
+
+        tasks.forEach(task => {
+
+            const checkButton = task.querySelector('.checkButton');
+            checkButton.addEventListener("click" , () => {
+                task.classList.toggle('taskChecked');
+            });
+            
+
+            const deleteTaskButton = task.querySelector('#deleteTaskButton');
+            function deleteTask(){
+                deleteTaskButton.parentElement.style.display = "none";
+            }
+            deleteTaskButton.addEventListener("click" , deleteTask);
+
+        });
+
+    </script>
+</body>
+</html>

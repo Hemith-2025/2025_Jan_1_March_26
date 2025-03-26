@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-List | 3 - Neumorphism</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --transition-fast: 0.2s;
+            --transition-medium: 0.5s;
+            --transition-slow: 0.8s;
+            --glow-small-center: 0 0 1em var(--theme);
+            --glow-large: 0 0.5em 1em var(--theme);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins;
+            transition: all 0.2s;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: var(--bg);
+        }
+        body.light {
+            --theme: rgb(0,90,255);
+            --bg: #e8e8e8;
+            --shadow-small: 0 0.2em 1em #00000050;
+        }
+        body.dark {
+            --theme: rgb(0, 204, 255);
+            --bg: #0a0a0a;
+            --shadow-small: 0 0.2em 1em #ffffff10;
+        }
+        .Todo-List {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            height: calc(100% - 10em);
+            width: calc(100% - 10em);
+            border-radius: 4em;
+            padding: 0 3em 3em;
+            background: var(--bg);
+        }
+        ::selection {
+            background: var(--theme);
+            color: var(--bg);
+        }
+        h1 {
+            height: fit-content;
+            width: 100%;
+            text-align: center;
+            color: var(--theme);
+            cursor: default;
+            margin-bottom: 0.2em;
+        }
+        body.dark h1 {
+            text-shadow: 0 0 1em;
+        }
+        .userInputBox {
+            display: flex;
+            align-items: center;
+            height: 4em;
+            width: 100%;
+            border-radius: 1em;
+            background: var(--bg);
+            padding-left: 1em;
+            overflow: hidden;
+            border: 2px solid transparent;
+            margin-bottom: 0.4em;
+            border: 2px solid var(--theme);
+            z-index: 1;
+        }
+        .userInputBox input {
+            height: 100%;
+            width: 100%;
+            border: none;
+            background: transparent;
+            outline: none;
+            color: var(--theme);
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        body.dark .userInputBox input {
+            text-shadow: 0 0 0.4em;
+        }
+        body.dark .userInputBox input::placeholder {
+            text-shadow: none;
+        }
+        .userInputBox button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-wrap: nowrap;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        .userInputBox button#clearButton {
+            position: relative;
+            width: 4em;
+            outline-color: var(--theme);
+            padding-left: 0.2em;
+        }
+        .userInputBox input:focus ~ button#clearButton {
+            background: var(--theme);
+        }
+        .userInputBox input:focus ~ button#clearButton  .Line {
+            background: var(--bg);
+        }
+        .userInputBox button#clearButton .Line {
+            position: absolute;
+            height: 0.4em;
+            width: 60%;
+            border-radius: 0.2em;
+            background: var(--theme);
+        }
+        .userInputBox button#clearButton .Line1 {
+            rotate: -45deg;
+        }
+        .userInputBox button#clearButton .Line2 {
+            rotate: 45deg;
+        }
+        .userInputBox button#clearButton:active :is(.Line1,.Line2) {
+            scale: 0.8;
+        }
+        .userInputBox button#addTaskButton {
+            padding: 0 1.5em 0 1em;
+            color: var(--theme);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .userInputBox button#addTaskButton:active {
+            scale: 0.8;
+        }
+        .userInputBox input:focus ~ button#addTaskButton {
+            background: var(--theme);
+            color: var(--bg);
+        }
+        .headingAndButton {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 3em;
+            width: 100%;
+            margin-bottom: 0.3em;
+        }
+        .headingAndButton h2 {
+            height: fit-content;
+            text-align: center;
+            margin-top: 0.2em;
+            color: var(--theme);
+            cursor: default;
+            margin-bottom: 0.4em;
+        }
+        body.dark .headingAndButton h2 {
+            text-shadow: 0 0 1em;
+        }
+        .headingAndButton button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 80%;
+            width: fit-content;
+            border-radius: 1em;
+            padding: 0 1.5em;
+            color: var(--theme);
+            background: transparent;
+            border: 2px solid var(--theme);
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        body.light .headingAndButton button:hover {
+            color: var(--bg);
+            background: var(--theme);
+            border: 2px solid var(--theme);
+        }
+        body.dark .headingAndButton button:hover {
+            box-shadow: 0 0 2em var(--theme);
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1em;
+            height: 100%;
+            width: 100%;
+            border-radius: 1em;
+            padding: 1em;
+            overflow: hidden;
+            border: 2px solid var(--theme);
+            background: var(--bg);
+            z-index: 1;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+        ul::-webkit-scrollbar {
+            position: relative;
+            appearance: none;
+            background: transparent;
+            width: 14px;
+            height: 14px;
+        }
+        ul::-webkit-scrollbar-thumb {
+            background: var(--theme);
+            border-radius: 7em;
+            border: 3px solid var(--bg);
+        }
+        ul::-webkit-scrollbar-track {
+            margin: 2em 0;
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: fit-content;
+            width: 100%;
+            background: transparent;
+            border-radius: 1em;
+            padding: 1.4em 2em;
+            box-shadow: var(--shadow-small);
+        }
+        li .left {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 1em;
+        }
+        li .left button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-height: 1.6em;
+            max-width: 1.6em;
+            min-height: 1.6em;
+            min-width: 1.6em;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 2px solid var(--theme);
+            cursor: pointer;
+        }
+        body.light li.taskChecked .left button {
+            background-color: var(--theme);
+            border: 2px solid var(--bg);
+        }
+        body.dark li.taskChecked .left button {
+            background-color: var(--theme);
+            border: 2px solid var(--theme);
+            box-shadow: 0 0 1em var(--theme);
+        }
+        body.light li .left .text {
+            cursor: default;
+            font-size: 1.2em;
+        }
+        body.dark li .left .text {
+            color: var(--theme);
+            text-shadow: 0 0 1em;
+        }
+        li.taskChecked .left .text {
+            text-decoration: line-through;
+        }
+        li button#deleteTaskButton {
+            padding: 0.5em 1em;
+            border-radius: 1em;
+            background-color: transparent;
+            border: 2px solid rgb(255, 60, 60);
+            color: rgb(255, 60, 60);
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            font-size: 0.9em;
+        }
+        body.light li button#deleteTaskButton:hover,
+        body.light li button#deleteTaskButton:active {
+            background: rgb(255, 60, 60);
+            color: var(--bg);
+        }
+        body.dark li button#deleteTaskButton:hover,
+        body.dark li button#deleteTaskButton:active {
+            background: rgb(255, 60, 60);
+            color: #e8e8e8;
+            box-shadow: 0 0 1em rgb(255, 60, 60);
+        }
+    </style>
+</head>
+<body class="light">
+    <div class="Todo-List">
+        <h1>To-do List</h1>
+        <div class="userInputBox">
+            <input type="text" id="userInput" placeholder="Enter your Task here">
+            <button id="clearButton">
+                <div class="Line Line1"></div>
+                <div class="Line Line2"></div>
+            </button>
+            <button id="addTaskButton">ADD TASK</button>
+        </div>
+        <div class="headingAndButton">
+            <h2>Your Tasks</h2>
+            <button id="themeButton">Shift Theme</button>
+        </div>
+        <ul class="tasks">
+            <!-- <li class="task">
+                <div class="left">
+                    <button id="checkButton"></button>
+                    <div class="text">Task 1</div>
+                </div>
+                <button id="deleteTaskButton">Delete</button>
+            </li>
+            <li class="task">
+                <div class="left">
+                    <button id="checkButton"></button>
+                    <div class="text">Task 2</div>
+                </div>
+                <button id="deleteTaskButton">Delete</button>
+            </li>
+            <li class="task">
+                <div class="left">
+                    <button id="checkButton"></button>
+                    <div class="text">To-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do ListTo-do List</div>
+                </div>
+                <button id="deleteTaskButton">Delete</button>
+            </li> -->
+        </ul>
+    </div>
+    <script>
+        function launchJavascript(){
+            function forTasks(){
+                const userInputBox = document.querySelector('.userInputBox');
+                const input = userInputBox.querySelector("input");
+                const clearButton = userInputBox.querySelector('#clearButton');
+                const addTaskButton = userInputBox.querySelector('#addTaskButton');
+                const tasks = document.querySelector("ul");
+                const allTasks = tasks.querySelectorAll('.task');
+                function clearInputBox(){
+                    input.value = "";
+                }
+                function addTask(){
+                    if (input.value === ""){
+                        alert("Please , enter your task!");
+                    }
+                    else {
+
+                        let task = document.createElement("li");
+                        task.setAttribute('class','task');
+                        tasks.appendChild(task);
+
+                        let left = document.createElement("div");
+                        left.setAttribute('class','left');
+                        task.appendChild(left);
+
+                        let checkButton = document.createElement("button");
+                        checkButton.setAttribute('id','checkButton');
+                        left.appendChild(checkButton);
+
+                        let text = document.createElement("div");
+                        text.setAttribute('class','text');
+                        text.textContent = input.value;
+                        left.appendChild(text);
+
+                        let deleteTaskButton = document.createElement("button");
+                        deleteTaskButton.setAttribute('id','deleteTaskButton');
+                        deleteTaskButton.textContent = "Delete";
+                        task.appendChild(deleteTaskButton);
+
+                        input.value = "";
+
+                        checkButton.addEventListener("click" , () => {
+                            task.classList.toggle('taskChecked');
+                        });
+
+                        deleteTaskButton.addEventListener("click" , () => {
+                            task.remove();
+                        });
+                    };
+                };
+                clearButton.addEventListener("click" , clearInputBox);
+                addTaskButton.addEventListener("click" , addTask);
+            };
+            function forTheme(){
+                const body = document.querySelector("body");
+                const themeButton = document.getElementById("themeButton");
+                function shiftTheme(){
+                    body.classList.toggle('dark');
+                }
+                themeButton.addEventListener("click" , shiftTheme);
+            }
+            forTasks();
+            forTheme();
+        }
+        launchJavascript();
+    </script>
+</body>
+</html>

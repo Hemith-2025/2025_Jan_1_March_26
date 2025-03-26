@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List | 1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="To-doList">
+        <h1>Todo List</h1>
+        <div class="userInputBox">
+            <input type="text" id="userTaskInput">
+            <button id="clear">
+                <div class="Line Line1"></div>
+                <div class="Line Line2"></div>
+            </button>
+            <button id="addTask" onclick="addTask()">Add Task</button>
+        </div>
+        <h2>Your Tasks</h2>
+        <ul id="tasks">
+            <li class="task">
+                <div class="buttonAndName">
+                    <button id="checkBtn"></button>
+                    <div class="name">Task 1</div>
+                </div>
+                <button id="deleteTask">
+                    trash
+                </button>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
