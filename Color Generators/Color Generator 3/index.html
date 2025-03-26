@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Generator | 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="colorGenerator">
+        <div class="blob1">
+            <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color: rgb(0, 255, 255);"></stop>
+                    <stop offset="100%" style="stop-color: rgb(247, 0, 255);"></stop>
+                  </linearGradient>
+                </defs>
+                <path fill="url(#gradient)">
+                    <animate attributeName="d"
+                        dur="10s"
+                        repeatCount="indefinite"
+                        values="M452.44618,331.57161Q413.14322,413.14322,331.57161,430.259Q250,447.37479,175.83757,422.84982Q101.67514,398.32486,75.59686,324.16243Q49.51857,250,63.61056,163.85127Q77.70255,77.70255,163.85127,45.96501Q250,14.22748,314.61169,67.50205Q379.22337,120.77663,435.48625,185.38831Q491.74913,250,452.44618,331.57161Z;
+                        M434,337.5Q425,425,337.5,427.5Q250,430,169.5,420.5Q89,411,46,330.5Q3,250,63,186.5Q123,123,186.5,69Q250,15,313.5,69Q377,123,410,186.5Q443,250,434,337.5Z;
+                        M435.5,316.5Q383,383,316.5,404.5Q250,426,178,410Q106,394,83,322Q60,250,88.5,183.5Q117,117,183.5,88Q250,59,338.5,66Q427,73,457.5,161.5Q488,250,435.5,316.5Z;
+                        M444.5,338Q426,426,338,458.5Q250,491,175,445.5Q100,400,61,325Q22,250,59,173Q96,96,173,51Q250,6,319,59Q388,112,425.5,181Q463,250,444.5,338Z;
+                        M428.5,313.5Q377,377,313.5,432Q250,487,184.5,434Q119,381,75,315.5Q31,250,73,182.5Q115,115,182.5,85.5Q250,56,338,65Q426,74,453,162Q480,250,428.5,313.5Z;
+                        M452.44618,331.57161Q413.14322,413.14322,331.57161,430.259Q250,447.37479,175.83757,422.84982Q101.67514,398.32486,75.59686,324.16243Q49.51857,250,63.61056,163.85127Q77.70255,77.70255,163.85127,45.96501Q250,14.22748,314.61169,67.50205Q379.22337,120.77663,435.48625,185.38831Q491.74913,250,452.44618,331.57161Z"
+                    ></animate>
+                </path>
+              </svg>
+        </div>
+        <div class="blob2">
+            <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color: rgb(0, 255, 255);"></stop>
+                    <stop offset="100%" style="stop-color: rgb(247, 0, 255);"></stop>
+                  </linearGradient>
+                </defs>
+                <path fill="url(#gradient)">
+                    <animate attributeName="d"
+                        dur="10s"
+                        repeatCount="indefinite"
+                        values="M452.44618,331.57161Q413.14322,413.14322,331.57161,430.259Q250,447.37479,175.83757,422.84982Q101.67514,398.32486,75.59686,324.16243Q49.51857,250,63.61056,163.85127Q77.70255,77.70255,163.85127,45.96501Q250,14.22748,314.61169,67.50205Q379.22337,120.77663,435.48625,185.38831Q491.74913,250,452.44618,331.57161Z;
+                        M444.5,338Q426,426,338,458.5Q250,491,175,445.5Q100,400,61,325Q22,250,59,173Q96,96,173,51Q250,6,319,59Q388,112,425.5,181Q463,250,444.5,338Z;
+                        M434,337.5Q425,425,337.5,427.5Q250,430,169.5,420.5Q89,411,46,330.5Q3,250,63,186.5Q123,123,186.5,69Q250,15,313.5,69Q377,123,410,186.5Q443,250,434,337.5Z;
+                        M452.44618,331.57161Q413.14322,413.14322,331.57161,430.259Q250,447.37479,175.83757,422.84982Q101.67514,398.32486,75.59686,324.16243Q49.51857,250,63.61056,163.85127Q77.70255,77.70255,163.85127,45.96501Q250,14.22748,314.61169,67.50205Q379.22337,120.77663,435.48625,185.38831Q491.74913,250,452.44618,331.57161Z;
+                        M435.5,316.5Q383,383,316.5,404.5Q250,426,178,410Q106,394,83,322Q60,250,88.5,183.5Q117,117,183.5,88Q250,59,338.5,66Q427,73,457.5,161.5Q488,250,435.5,316.5Z;
+                        M452.44618,331.57161Q413.14322,413.14322,331.57161,430.259Q250,447.37479,175.83757,422.84982Q101.67514,398.32486,75.59686,324.16243Q49.51857,250,63.61056,163.85127Q77.70255,77.70255,163.85127,45.96501Q250,14.22748,314.61169,67.50205Q379.22337,120.77663,435.48625,185.38831Q491.74913,250,452.44618,331.57161Z"
+                    ></animate>
+                </path>
+              </svg>
+        </div>
+        <div class="headingAndButtons">
+            <h1>Color Generator</h1>
+            <div class="colorCodeandButtons">
+                <div id="colorCode">rgb(0,0,0)</div>
+                <div class="dropdown">
+                    <button id="button"></button>
+                    <ul class="">
+                        <button class="active" id="defaultBtn">Default</button>
+                        <button class="" id="RedBtn">Red</button>
+                        <button class="" id="greenBtn">Green</button>
+                        <button class="" id="orangeBtn">Orange</button>
+                        <button class="" id="pinkBtn">Pink</button>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="colorPreview"></div>
+        <div class="sliders">
+            <div class="sliderCover">
+                <input type="range" class="slider" id="redSlider" min="0" max="255" value="0">
+                <div class="valueBox" id="redSliderValueBox">0</div>
+            </div>
+            <div class="sliderCover">
+                <input type="range" class="slider" id="greenSlider" min="0" max="255" value="0">
+                <div class="valueBox" id="greenSliderValueBox">0</div>
+            </div>
+            <div class="sliderCover">
+                <input type="range" class="slider" id="blueSlider" min="0" max="255" value="0">
+                <div class="valueBox" id="blueSliderValueBox">0</div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="randomBtn">Random</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+    </div>
+</body>
+</html>

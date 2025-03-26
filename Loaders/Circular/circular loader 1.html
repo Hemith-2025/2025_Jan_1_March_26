@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Loader | 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            background-color: #0a0a0a;
+        }
+        .loader {
+            position: relative;
+            height: 10em;
+            width: 10em;
+            border-radius: 50%;
+            z-index: 1;
+            animation: rotate 2s infinite;
+        }
+        .loader::before {
+            content: '';
+            position: absolute;
+            inset: 0.4em;
+            background: #0a0a0a;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .loader::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            filter: blur(1em);
+            animation: rotate 2s infinite;
+            
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);background: linear-gradient(
+                45deg,
+                transparent,
+                transparent 40%,
+                blueviolet
+            );
+            }
+            50% {
+                transform: rotate(180deg);
+                background: linear-gradient(
+                45deg,
+                transparent,
+                transparent 40%,
+                blue
+            );
+            }
+            100% {
+                transform: rotate(360deg);
+                background: linear-gradient(
+                45deg,
+                transparent,
+                transparent 40%,
+                blueviolet
+            );
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+</body>
+</html>

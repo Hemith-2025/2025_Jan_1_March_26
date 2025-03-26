@@ -1,0 +1,237 @@
+:root {
+    --default: rgb(0, 0, 0);
+    --clr-1: #e8e8e8;
+    --clr-2: #181818;
+    --pink: ;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Orbitron" , sans-serif;
+    transition: all 0.3s;
+}
+body {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #e8e8e8;
+    overflow: hidden;
+}
+::selection {
+    color: white;
+    background: var(--default);
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.colorGenerator {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: start;
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(3em);
+    height: 800px;
+    width: 700px;
+    border-radius: 2em;
+    border: 3px solid #00000020;
+    padding: 2em;
+    z-index: 2;
+    overflow: hidden;
+}
+.colorGenerator .blob1 {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    height: 370px;
+    width: 370px;
+    z-index: -1;
+    animation: rotate 20s linear infinite;
+}
+.colorGenerator .blob2 {
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    height: 370px;
+    width: 370px;
+    z-index: -1;
+    animation: rotate 20s linear infinite;
+}
+.colorGenerator .blob1 , .blob2 {
+    filter: blur(2em);
+}
+.colorGenerator .headingAndButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    margin-bottom: 1em;
+}
+.colorGenerator .headingAndButtons h1 {
+    text-wrap: nowrap;
+    cursor: default;
+}
+.colorGenerator .headingAndButtons .colorCodeandButtons {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 1em;
+}
+.headingAndButtons .colorCodeandButtons #colorCode {
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.headingAndButtons .dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+}
+.headingAndButtons .dropdown #button {
+    height: 30px;
+    width: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: var(--default);
+    cursor: pointer;
+}
+.headingAndButtons .dropdown ul {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    height: fit-content;
+    width: fit-content;
+    padding: 1em;
+    background: transparent;
+    backdrop-filter: blur(1em);
+    opacity: 0;
+    pointer-events: none;
+}
+.headingAndButtons .dropdown ul.active {
+    top: 50px;
+    opacity: 1;
+    pointer-events: all;
+}
+.headingAndButtons .dropdown ul button {
+    height: fit-content;
+    width: 100%;
+    padding: 1em 2em;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 0.5em;
+    color: var(--default);
+    background: transparent;
+    cursor: pointer;
+}
+.headingAndButtons .dropdown ul button.active {
+    background: var(--default);
+    color: white;
+}
+.colorGenerator .colorPreview {
+    height: 100%;
+    width: 100%;
+    background: black;
+    border-radius: 1em;
+}
+.colorGenerator .colorPreview.active {
+    height: 100%;
+    width: 72%;
+    background: black;
+    border-radius: 1em;
+}
+.colorGenerator .sliders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+    height: fit-content;
+    width: 100%;
+    margin-top: 1em;
+}
+.sliders .sliderCover {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    height: 40px;
+    width: 100%;
+}
+.sliderCover .slider {
+    appearance: none;
+    height: 100%;
+    width: 100%;
+    border-radius: 0.8em;
+    box-shadow: 0 0.2em 0.8em #00000050;
+}
+.sliderCover .slider::-webkit-slider-runnable-track {
+    padding: 5px 5px;
+    height: 100%;
+    width: 100%;
+}
+.sliderCover .slider::-webkit-slider-thumb {
+    height: 100%;
+    width: 10px;
+    border-radius: 0.5em;
+    appearance: none;
+    background: #00000050;
+    transition: 0.3s;
+}
+.sliderCover .slider:active::-webkit-slider-thumb {
+    background: var(--default);
+}
+.sliderCover .valueBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100px;
+    background: transparent;
+    border: 2px solid #00000050;
+    outline: none;
+    text-align: center;
+    border-radius: 1em;
+    font-weight: bold;
+    cursor: default;
+}
+.sliderCover .valueBox:focus {
+    border:  2px solid #000000;
+}
+.colorGenerator .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    height: 70px;
+    width: 100%;
+    margin-top: 1em;
+}
+.colorGenerator .buttons button {
+    height: 100%;
+    width: 100%;
+    border: 2px solid var(--default);
+    border-radius: 1em;
+    color: var(--default);
+    background: transparent;
+    font-weight: bold;
+    cursor: pointer;
+}
+.colorGenerator .buttons button:hover {
+    color: white;
+    background: var(--default);
+}

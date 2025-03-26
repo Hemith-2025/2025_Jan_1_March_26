@@ -1,0 +1,259 @@
+:root {
+    /* Transitions */
+    --transition-fast: 0.2s;
+    --transition-medium: 0.5s;
+    --transition-slow: 1s;
+
+    /* Colors */
+    --bg: #e8e8e8;
+
+    
+    /* Border radius */
+    --em-small-small: 0.5em;
+    --em-small: 1em;
+    --em-medium: 2em;
+    --em-large: 3em;
+    
+    /* Box shadows */
+    --light-boxshadow: -0.5em -0.5em 2em white , 0.5em 0.5em 2em gray;
+    --glow: 0 0 var(--em-small) var(--theme);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    transition: all var(--transition-medium);
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg);
+}
+body.default {
+    --theme: rgb(29,120,255); /* default */
+}
+body.pink {
+    --theme: rgb(255, 29, 225); /* pink */
+}
+body.green {
+    --theme: rgb(24, 206, 7); /* green */
+}
+body.red {
+    --theme: rgb(255, 23, 23); /* red */
+}
+body.orange {
+    --theme: rgb(255, 77, 23); /* orange */
+}
+::-webkit-scrollbar {
+    height: 14px;
+    width: 14px;
+    background-color: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--theme);
+    border: 3px solid var(--bg);
+    border-radius: 7px;
+}
+::-webkit-scrollbar-corner {
+    appearance: none;
+    background: var(--bg);
+}
+::selection {
+    color: white;
+    background: var(--theme);
+}
+.colorGenerator {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 700px;
+    width: 500px;
+    border-radius: 3em;
+    padding: 2em;
+    background: var(--bg);
+    box-shadow: var(--light-boxshadow);
+    margin: var(--em-large);
+}
+.colorGenerator .titleColorCode {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+}
+
+.titleColorCode p {
+    font-size: 1.7em;
+    font-weight: 600;
+    color: var(--theme);
+}
+
+.titleColorCode div {
+    padding: var(--em-small-small) var(--em-small);
+    border-radius: var(--em-small);
+    color: var(--theme);
+    box-shadow: var(--light-boxshadow);
+    cursor: pointer;
+}
+.colorGenerator .colorPreview {
+    height: 100%;
+    width: 100%;
+    background: white;
+    border-radius: var(--em-small);
+    box-shadow: var(--light-boxshadow);
+    margin: var(--em-small) 0;
+    z-index: 1;
+}
+.colorGenerator .sliders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--em-small-small);
+    height: fit-content;
+    width: 100%;
+    z-index: 2;
+}
+.sliders .sliderCover {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--em-small);
+    height: var(--em-large);
+    width: 100%;
+}
+.sliderCover input {
+    appearance: none;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border-radius: var(--em-small);
+    border: 2px solid var(--theme);
+    outline-color: var(--theme);
+    transition: var(--transition-fast);
+}
+.sliderCover input:active {
+    border: 2px solid transparent;
+    box-shadow: var(--light-boxshadow);
+}
+.sliderCover input::-webkit-slider-runnable-track {
+    padding: 0 var(--em-small-small);
+}
+.sliderCover input::-webkit-slider-thumb {
+    appearance: none;
+    height: var(--em-medium);
+    width: var(--em-small-small);
+    background: var(--theme);
+    border-radius: var(--em-small-small);
+}
+.sliderCover div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 70px;
+    font-weight: bold;
+    color: var(--theme);
+    border-radius: var(--em-small-small);
+    padding: 0 var(--em-small);
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--em-small-small);
+    width: 100%;
+    margin: var(--em-small) 0 0;
+    z-index: 3;
+}
+.buttons button {
+    height: 40px;
+    width: 100%;
+    background: transparent;
+    border-radius: var(--em-small);
+    cursor: pointer;
+}
+.buttons button#randomiseBtn {
+    color: var(--theme);
+    border: 2px solid var(--theme);
+}
+.buttons button#randomiseBtn:hover {
+    color: white;
+    background: var(--theme);
+    border: 2px solid var(--theme);
+}
+.buttons button#randomiseBtn:hover {
+    box-shadow: var(--light-boxshadow);
+}
+.buttons button#resetButton {
+    color: white;
+    background: var(--theme);
+    border: 2px solid var(--theme);
+}
+.buttons button#resetButton:hover {
+    box-shadow: var(--light-boxshadow);
+}
+.buttons .dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: fit-content;
+    z-index: 1;
+}
+.buttons .dropdown button.button {
+    height: 100%;
+    width: var(--em-small);
+    z-index: 1;
+    border: none;
+    background: var(--theme);
+    box-shadow: var(--glow);
+}
+.buttons .dropdown .menu {
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--em-small);
+    padding: var(--em-small);
+    height: fit-content;
+    width: fit-content;
+    border-radius: var(--em-small);
+    background: transparent;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+}
+.dropdown .menu.menuActive {
+    bottom: 50px;
+    filter: blur(0px);
+    opacity: 1;
+    pointer-events: all;
+}
+.dropdown .menu button {
+    height: fit-content;
+    width: 100px;
+    padding: var(--em-small) 0 ;
+    border: none;
+    outline: none;
+    color: var(--theme);
+    font-weight: bold;
+    transform: translateY(200%);
+    transition: var(--transition-medium);
+}
+.dropdown .menu.menuActive button {
+    transform: translateY(0%);
+}
+.dropdown .menu button.active {
+    color: white;
+    background-color: var(--theme);
+    box-shadow: var(--glow);
+}

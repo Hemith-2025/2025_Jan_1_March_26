@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Selector | 1</title>
+    
+    <!-- For Icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
+    
+    <!-- Main Font Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- For Font : Lobster -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- For Font : Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Styling -->
+    <style>
+        :root {
+            --primary-color: #000;
+            --theme-color: #0f0;
+            --visibility-color: #ffffff;
+            --glow-color: #fff;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins;
+            transition: all 0.3s;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: var(--primary-color);
+        }
+        ::selection {
+            color: var(--visibility-color);
+            background: var(--theme-color);
+        }
+        .colorSelector {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            height: 700px;
+            width: 600px;
+            border-radius: 3em;
+            padding: 2em;
+            box-shadow: 0 0 2em 1em var(--theme-color);
+        }
+        .headingAndColorCode {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 10%;
+            width: 100%;
+            margin-bottom: 1em;
+        }
+        .headingAndColorCode h1 {
+            color: var(--theme-color);
+            text-shadow: 0 0 0.8em var(--theme-color);
+        }
+        .headingAndColorCode .colorCode {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--visibility-color);
+            background: var(--theme-color);
+            height: 100%;
+            width: fit-content;
+            border-radius: 1em;
+            padding: 0 2em;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .colorCode::selection {
+            color: var(--theme-color);
+            background: var(--visibility-color);
+        }
+        h2.text {
+            height: fit-content;
+            width: 100%;
+            color: var(--theme-color);
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+        .colorPreview {
+            height: 100%;
+            width: 100%;
+            border-radius: 1em;
+            background: #fff;
+            box-shadow: 0 0 1.5em var(--glow-color);
+            margin-bottom: 2em;
+        }
+        .slidersWrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 40%;
+            width: 100%;
+        }
+        .slidersWrapper .sliderCover {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1em;
+            height: fit-content;
+            width: 100%;
+        }
+        .sliderCover .valueBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--visibility-color);
+            background: var(--theme-color);
+            height: 40px;
+            width: 80px;
+            border-radius: 0.5em;
+            font-weight: bold;
+        }
+        .sliderCover input {
+            appearance: none;
+            height: 26px;
+            width: 100%;
+            border-radius: 0.5em;
+            background: transparent;
+            overflow: hidden;
+            transition: all 0.5s;
+        }
+        .sliderCover input::-webkit-slider-thumb {
+            appearance: none;
+            height: 26px;
+            width: 0;
+            box-shadow: -282px 0 0 282px var(--theme-color);
+            filter: blur(5px);
+        }
+        .colorSelector .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1em;
+            height: 10%;
+            width: 100%;
+            margin-top: 1em;
+        }
+        .buttons button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            border-radius: 1em;
+            border: none;
+            outline: none;
+            backdrop-filter: blur(20px);
+            cursor: pointer;
+        }
+        .buttons button:hover {
+            letter-spacing: 2px;
+        }
+        .buttons button#randomiseButton {
+            color: var(--theme-color);
+            background: transparent;
+            border: 2px solid var(--theme-color);
+        }
+        .buttons button#randomiseButton:hover {
+            color: var(--visibility-color);
+            background: var(--theme-color);
+            border: 2px solid var(--theme-color);
+            box-shadow: 0 0 1em var(--theme-color);
+        }
+        .buttons button#resetButton {
+            color: var(--visibility-color);
+            background: var(--theme-color);
+            border: 2px solid var(--theme-color);
+        }
+        .buttons button#resetButton:hover {
+            color: var(--theme-color);
+            background: transparent;
+            border: 2px solid var(--theme-color);
+            box-shadow:
+                        inset 0 0 1em var(--theme-color),
+                        0 0 1em var(--theme-color);
+        }
+        @media (max-width:726px) {
+            .colorSelector {
+                height: 100vh;
+                width: 100%;
+                box-shadow: none;
+            }
+            .slidersWrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0.5em;
+                height: 20%;
+                width: 100%;
+            }
+        }
+     </style>
+</head>
+<body>
+    <div class="colorSelector">
+        <div class="headingAndColorCode">
+            <h1>Color Selector</h1>
+            <div class="colorCode" onclick="showNotification()">rgb(255,255,255)</div>
+        </div>        
+        <h2 class="text">Create upto 1,65,81,375 colors!</h2>
+        <div class="colorPreview"></div>
+        <div class="slidersWrapper">
+            <div class="sliderCover">
+                <input type="range" id="redSlider" min="0" max="255" value="255">
+                <div class="redValueBox valueBox">255</div>
+            </div>
+            <div class="sliderCover">
+                <input type="range" id="greenSlider" min="0" max="255" value="255">
+                <div class="greenValueBox valueBox">255</div>
+            </div>
+            <div class="sliderCover">
+                <input type="range" id="blueSlider" min="0" max="255" value="255">
+                <div class="blueValueBox valueBox">255</div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="randomiseButton">Random</button>
+            <button id="resetButton">Reset</button>
+        </div>
+    </div>
+    <script>
+        
+        const colorCode = document.querySelector('.colorCode');
+        const colorPreview = document.querySelector('.colorPreview');
+        const sliderCovers = document.querySelectorAll('.sliderCover');
+
+        function showNotification(){
+            navigator.clipboard.writeText(colorCode.textContent);
+            alert("Color Code copied : " + colorCode.innerHTML);
+        };
+        
+        // Change value in Value box on slider input
+        sliderCovers.forEach(sliderCover => {
+            const input = sliderCover.querySelector('input');
+            const valueBox = sliderCover.querySelector('div');
+            input.addEventListener("input" , () => {
+                let sliderValue = input.value;
+                valueBox.textContent = sliderValue;
+            });
+        });
+
+        const redSlider = document.getElementById("redSlider");
+        const greenSlider = document.getElementById("greenSlider");
+        const blueSlider = document.getElementById("blueSlider");
+        
+        redSlider.addEventListener("input" , () => {
+            let redSliderValue = redSlider.value;
+            let greenSliderValue = greenSlider.value;
+            let blueSliderValue = blueSlider.value;
+            let userColorCode = colorCode.textContent = 'rgb(' + redSliderValue + ',' + greenSliderValue + ',' + blueSliderValue + ')';
+            colorPreview.style.background = colorCode.textContent;
+            document.documentElement.style.setProperty('--glow-color',userColorCode);
+            return userColorCode;
+        });
+        greenSlider.addEventListener("input" , () => {
+            let redSliderValue = redSlider.value;
+            let greenSliderValue = greenSlider.value;
+            let blueSliderValue = blueSlider.value;
+            let userColorCode = colorCode.textContent = 'rgb(' + redSliderValue + ',' + greenSliderValue + ',' + blueSliderValue + ')';
+            colorPreview.style.background = userColorCode;
+            document.documentElement.style.setProperty('--glow-color',userColorCode);
+            return userColorCode;
+        });
+        blueSlider.addEventListener("input" , () => {
+            let redSliderValue = redSlider.value;
+            let greenSliderValue = greenSlider.value;
+            let blueSliderValue = blueSlider.value;
+            let userColorCode = colorCode.textContent = 'rgb(' + redSliderValue + ',' + greenSliderValue + ',' + blueSliderValue + ')';
+            colorPreview.style.background = userColorCode;
+            document.documentElement.style.setProperty('--glow-color',userColorCode);
+            return userColorCode;
+        });
+
+        const redValueBox = document.querySelector('.redValueBox');
+        const greenValueBox = document.querySelector('.greenValueBox');
+        const blueValueBox = document.querySelector('.blueValueBox');
+
+        const randomiseButton = document.getElementById("randomiseButton");
+        randomiseButton.addEventListener("click" , () => {
+            let randomRedValue = Math.floor(Math.random() * 255);
+            let randomGreenValue = Math.floor(Math.random() * 255);
+            let randomBlueValue = Math.floor(Math.random() * 255);
+            redSlider.value = randomRedValue;
+            greenSlider.value = randomGreenValue;
+            blueSlider.value = randomBlueValue;
+            let userColorCode = colorCode.textContent = 'rgb(' + randomRedValue + ',' + randomGreenValue + ',' + randomBlueValue + ')';
+            colorPreview.style.background = userColorCode;
+            document.documentElement.style.setProperty('--glow-color',userColorCode);
+            redValueBox.textContent = randomRedValue;
+            greenValueBox.textContent = randomGreenValue;
+            blueValueBox.textContent = randomBlueValue;
+            console.log(userColorCode);
+        });
+
+        const resetButton = document.getElementById("resetButton");
+        resetButton.addEventListener("click" , () => {
+            let userColorCode = colorCode.textContent = 'rgb(' + 255 + ',' + 255 + ',' + 255 + ')';
+            colorPreview.style.background = userColorCode;
+            document.documentElement.style.setProperty('--glow-color',userColorCode);
+            redSlider.value = 255;
+            greenSlider.value = 255;
+            blueSlider.value = 255;
+            redValueBox.textContent = 255;
+            greenValueBox.textContent = 255;
+            blueValueBox.textContent = 255;
+        });
+
+    </script>
+</body>
+</html>

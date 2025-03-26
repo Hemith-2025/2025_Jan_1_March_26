@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Generator | 2</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body class="default">
+    <div class="colorGenerator">
+        <div class="titleColorCode">
+            <p>Color Generator</p>
+            <div class="colorCode" title="Click to copy Color Code">rgb(255,255,255)</div>
+        </div>
+        <div class="colorPreview"></div>
+        <div class="sliders">
+            <div class="sliderCover">
+                <input type="range" id="redSlider" min="0" max="255" value="255">
+                <div class="redValueBox">255</div>
+            </div>
+            <div class="sliderCover">
+                <input type="range" id="greenSlider" min="0" max="255" value="255">
+                <div class="greenValueBox">255</div>
+            </div>
+            <div class="sliderCover">
+                <input type="range" id="blueSlider" min="0" max="255" value="255">
+                <div class="blueValueBox">255</div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="randomiseBtn">Random</button>
+            <button id="resetButton">Reset</button>
+            <div class="dropdown">
+                <button class="button"></button>
+                <div class="menu">
+                    <button class="colorButton active" id="defaultBtn">Default</button>
+                    <button class="colorButton" id="pinkBtn">Pink</button>
+                    <button class="colorButton" id="greenBtn">Green</button>
+                    <button class="colorButton" id="RedBtn">Red</button>
+                    <button class="colorButton" id="OrangeBtn">Orange</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="javascript.js"></script>
+</body>
+</html>
