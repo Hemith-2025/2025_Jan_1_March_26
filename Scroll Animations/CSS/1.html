@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll animation 1 (CSS)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: black;
+        }
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            height: fit-content;
+            margin-top: 100vh;
+            margin-bottom: 100vh;
+        }
+        .section h1 {
+            color: white;
+            font-size: 8em;
+            font-weight: 600;
+            transform-origin: bottom;
+            transform: scale(0.5);
+            opacity: 1;
+            animation: scrollHeadingReveal forwards;
+            animation-timeline: view();
+            animation-range: entry 0 cover 100%;
+        }
+        .section p {
+            height: fit-content;
+            width: 100%;
+            text-align: center;
+            padding: 0 4em;
+        }
+        .section p span {
+            color: #ffffff20;
+            background: linear-gradient(
+                90deg,
+                red,
+                blue
+            ) no-repeat text;
+            background-size: 0% 100%;
+            font-size: 1.4em;
+            height: fit-content;
+            width: 100%;
+            animation: scrollParagraphReveal;
+            animation-timeline: view();
+            animation-range-start: contain 0vh;
+            animation-range-end: contain 100vh;
+        }
+        @keyframes scrollHeadingReveal {
+            60% , 70% {
+                color: #ffffff;
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                color: #ffffff;
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        @keyframes scrollParagraphReveal {
+            70% , 100% {
+                background-size: 100% 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <h1><span>Meet Palma</span></h1>
+        <p>
+            <span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, praesentium. Sunt iste, assumenda reiciendis illum cumque officiis quibusdam, rem atque accusamus totam maiores? Omnis quos, enim magnam vel aperiam neque?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, praesentium. Sunt iste, assumenda reiciendis illum cumque officiis quibusdam, rem atque accusamus totam maiores? Omnis quos, enim magnam vel aperiam neque?
+            </span>
+        </p>
+    </div>
+</body>
+</html>

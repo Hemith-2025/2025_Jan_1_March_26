@@ -1,0 +1,317 @@
+:root {
+    --theme: rgb(0,190,255);
+    --dark: rgb(0,40,100);
+    --light: #e8e8e8;
+    --black: #333;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    transition: all 0.3s;
+}
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+a {
+    text-decoration: none;
+}
+body button#themeBtn {
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    border: 2px solid var(--theme);
+    padding: 0.5em 1em;
+    border-radius: 0.8em;
+    color: var(--theme);
+    background: transparent;
+    cursor: pointer;
+}
+body .mainToggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 500px;
+    width: 1000px;
+    border-radius: 5em;
+    overflow: hidden;
+    box-shadow: 0 0.8em 2em #00000050;
+}
+/* FormsToggle Box */
+.mainToggle .formsToggle {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    cursor: default;
+}
+.mainToggle form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6em;
+    height: 100%;
+    width: 100%;
+    padding: 3em 3em;
+    pointer-events: all;
+}
+form h1 {
+    display: none;
+    color: var(--theme);
+}
+form fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6em;
+    border: none;
+    outline: none;
+    height: fit-content;
+    width: 100%;
+}
+fieldset .inputCover {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+}
+.inputCover input {
+    height: 100%;
+    width: 100%;
+    padding: 0 20px;
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+    background: transparent;
+    border-bottom: 3px solid lightgray;
+    letter-spacing: 1px;
+}
+.inputCover input:focus,
+.inputCover input:valid {
+    border-bottom: 3px solid var(--theme);
+    color: var(--theme);
+}
+.inputCover span {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: gray;
+}
+.inputCover input:focus ~ span,
+.inputCover input:valid ~ span {
+    top: -6px;
+    color: var(--theme);
+}
+form input[type="submit"] {
+    height: fit-content;
+    width: 100%;
+    border-radius: 1em;
+    padding: 1em 1.5em;
+    background: transparent;
+    outline: none;
+    font-weight: 600;
+    color: var(--theme);
+    border: 2px solid var(--theme);
+    cursor: pointer;
+}
+form .submitButtonEnabled {
+    opacity: 1;
+}
+form .submitButtonDisbled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+form input[type="submit"]:hover {
+    color: var(--light);
+    border: 2px solid var(--theme);
+    background: var(--theme);
+    box-shadow: 0 0.3em 1em #00000050;
+    cursor: pointer;
+}
+.confirmation {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.confirmation button {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--theme);
+    font-size: 1.2em;
+    cursor: pointer;
+}
+/* Info Toggle Box */
+.mainToggle .infoToggle {
+    position: absolute;
+    right: 50%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(
+        135deg,
+        var(--dark),
+        var(--theme)
+    );
+    opacity: 1;
+    overflow: hidden;
+    cursor: default;
+}
+.infoToggle :is(.loginInfo,.registrationInfo) {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 4em;
+    gap: 2em;
+}
+.infoToggle .loginInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    color: white;
+    opacity: 1;
+}
+.loginInfo .otherMethods {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+.infoToggle .registrationInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: white;
+}
+.infoToggle.showLoginInfo {
+    border-radius: 10em 0 0 2em;
+    right: 0;
+}
+.infoToggle.showRegistrationInfo {
+    border-radius: 0 2em 10em 0;
+    right: 50%;
+}
+.showLoginInfo .loginInfo {
+    transform: translateX(0%);
+    pointer-events: all;
+    filter: blur(0px);
+}
+.showLoginInfo .registrationInfo {
+    transform: translateX(-100%);
+    pointer-events: none;
+    filter: blur(10px);
+}
+.showRegistrationInfo .loginInfo {
+    transform: translateX(100%);
+    pointer-events: none;
+    filter: blur(10px);
+}
+.showRegistrationInfo .registrationInfo {
+    transform: translateX(0%);
+    pointer-events: all;
+    filter: blur(0px);
+}
+.otherMethods .buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+form .otherMethods {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2em;
+}
+.otherMethods .buttons a {
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer;
+}
+.buttons a svg {
+    width: 30px;
+}
+.buttons a svg path {
+    fill: var(--dark);
+}
+body.light {
+    background: var(--light);
+}
+body.dark {
+    background: var(--black);
+}
+body.dark form .otherMethods {
+    color: var(--light);
+}
+body.dark form .otherMethods .buttons svg path {
+    fill: var(--theme);
+}
+body.dark form h1 {
+    color: var(--theme);
+}
+body.dark form .confirmation {
+    color: var(--light);
+}
+body.dark .infoToggle {
+    background: linear-gradient(
+        135deg,
+        var(--theme),
+        var(--dark)
+    );
+}
+@media (max-width:1080px) {
+    body {
+        padding: 3em;
+    }
+    body .mainToggle {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 500px;
+        height: 700px;
+        box-shadow: 0 1em 2em #00000050;
+    }
+    .mainToggle .formsToggle {
+        width: 500px;
+    }
+    .formsToggle form {
+        width: 100%;
+        flex: 1 0 100%;
+        padding: 5em;
+    }
+    form h1 {
+        display: flex;
+        color: var(--dark);
+    }
+    .mainToggle .infoToggle {
+        position: relative;
+        width: 100%;
+    }
+    .showLoginForm form {
+        transform: translateX(0%);
+    }
+    .showRegistrationForm form {
+        transform: translateX(-100%);
+    }
+    .showLoginForm form.registrationForm {
+        filter: blur(10px);
+    }
+    .showRegistrationForm form.loginForm {
+        filter: blur(10px);
+    }
+    form .otherMethods {
+        display: flex;
+    }
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animation using JS | 3</title>
+    <style>
+        :root {
+            --primary: rgb(184, 241, 255);
+            --secondary: rgb(255,134,255);
+            --visibility: white;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins";
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        ::selection {
+            background-color: var(--secondary);
+            color: var(--visibility);
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            min-height: 100vh;
+            background: var(--primary);
+            color: black;
+        }
+        ::-webkit-scrollbar {
+            height: 14px;
+            width: 14px;
+            appearance: none;
+            background: var(--primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border: 3px solid var(--primary);
+            border-radius: 7px;
+        }
+        a {
+            text-decoration: none;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+            height: fit-content;
+            width: 100%;
+            z-index: 1000;
+        }
+        header .Logo {
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh;
+            width: 100%;
+            overflow: hidden;
+            margin-top: var(--headerHeight);
+        }
+        .hero img {
+            position: relative;
+            width: 100%;
+        }
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2em 5em;
+        }
+        body :is(#About , #Contact){
+            min-height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="Logo">LOGO</a>
+        <nav>
+            <a href="#Home">Home</a>
+            <a href="#About">About</a>
+            <a href="#Contact">Contact</a>
+        </nav>
+    </header>
+    <div class="hero" id="Home">
+        <img src="img.jpg" alt="Bg">
+    </div>
+    <section>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi, quam voluptatem voluptate eos, quis nesciunt aspernatur non provident exercitationem, tenetur dolor molestias nemo. Earum officiis voluptatibus maiores ab accusantium.
+    </section>
+    <section id="About">About</section>
+    <section id="Contact">Contact</section>
+    <script>
+        const header = document.querySelector("header");
+        const heroSection = document.querySelector('.hero');
+        const img = heroSection.querySelector("img");
+        window.onscroll = () => {
+            let scrolled = window.scrollY;
+            img.style.top = scrolled / 1.2 + "px";
+            console.log("Scrolled = "+scrolled + "px");
+        }
+        window.onresize = () => {
+            let headerHeight = header.clientHeight;
+            document.documentElement.style.setProperty('--headerHeight' , headerHeight + "px");
+            console.log("Header Height = " + headerHeight + "px");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cube | Shape</title>
+    <style>
+        :root {
+            --haw: 300px;
+            --black: #151515;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000000;
+        }
+        .cube {
+            position: relative;
+            height: var(--haw);
+            width: var(--haw);
+            transform-style: preserve-3d;
+            transform: rotateX(-30deg);
+            animation: rotate 4s linear infinite;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotateX(-30deg) rotateY(0deg);
+            }
+            100% {
+                transform: rotateX(-30deg) rotateY(360deg);
+            }
+        }
+        .cube div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            transform-style: preserve-3d;
+        }
+        .cube div span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(
+                var(--black),
+                var(--clr)
+            );
+            transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+        }
+        .cube .top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: var(--black);
+            transform: rotateX(90deg) translateZ(150px);
+        }
+        .cube .top:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: var(--clr);
+            transform: translateZ(-400px);
+            filter: blur(10em);
+        }
+    </style>
+</head>
+<body>
+    <div class="cube" style="--clr: #00ec00;">
+        <div class="top"></div>
+        <div>
+            <span style="--i:0;"></span>
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+        </div>
+    </div>
+    <div class="cube" style="--clr: #005eec;">
+        <div class="top"></div>
+        <div>
+            <span style="--i:0;"></span>
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+        </div>
+    </div>
+    <div class="cube" style="--clr: #ec00ec;">
+        <div class="top"></div>
+        <div>
+            <span style="--i:0;"></span>
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+:root {
+    --theme-default: rgb(209,32,94);
+    --theme-light: rgb(246,158,219);
+    --theme-light-transparent: rgba(246,158,219,0.2);
+    --theme-dark: rgb(31,43,65);
+    --theme-dark-transparent: rgba(31,43,65,0.5);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+    font-weight: 600;
+    transition: all 0.3s;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background: url("img.jpg") fixed center;
+    background-size: cover;
+    overflow: hidden;
+    padding: 5em;
+}
+a {
+    text-decoration: none;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 50%;
+}
+main h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--theme-default);
+    margin-bottom: 2em;
+}
+main .infoToggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+}
+.infoToggle div {
+    display: flex;
+    flex-direction: column;
+}
+.infoToggle div p {
+    font-size: 1.6em;
+    color: var(--theme-light);
+    text-wrap: nowrap;
+}
+.infoToggle .loginInfo {
+    transform: translateX(0%);
+}
+.infoToggle .registrationInfo {
+    position: absolute;
+    left: 50%;
+    filter: blur(20px);
+    opacity: 0;
+}
+.otherMethods {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.2em;
+}
+.otherMethods p {
+    color: var(--theme-default);
+}
+.otherMethods .buttons {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+.otherMethods .buttons a {
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer;
+}
+.buttons a svg {
+    width: 30px;
+}
+.buttons a svg path {
+    fill: var(--theme-light);
+}
+section {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 100%;
+    width: 50%;
+    border-radius: 2em;
+    background: var(--theme-light-transparent);
+    backdrop-filter: blur(20px);
+    padding: 2em;
+}
+section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+section form h1 {
+    color: var(--theme-light);
+}
+section form fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6em;
+    height: fit-content;
+    width: 100%;
+    margin-top: 1em;
+}
+section form fieldset .inputField {
+    position: relative;
+    display: flex;
+    height: 40px;
+    width: 100%;
+    background: transparent;
+}
+section form fieldset .inputField input {
+    height: 100%;
+    width: 100%;
+    padding: 0 20px;
+    border: none;
+    border-bottom: 2px solid var(--theme-light);
+    outline: none;
+    background-color: transparent;
+    appearance: none;
+    font-size: 1.3em;
+    letter-spacing: 2px;
+    color: var(--theme-dark);
+    text-shadow: 0 0 0.4em var(--theme-light);
+}
+section form fieldset .inputField input:focus,
+section form fieldset .inputField input:valid {
+    border-bottom: 2px solid var(--theme-default);
+}
+section form fieldset .inputField span {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+section form fieldset input:focus ~ span,
+section form fieldset input:valid ~ span {
+    top: -4px;
+    color: var(--theme-default);
+}
+section form .submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: fit-content;
+    width: 100%;
+    border-radius: 1em;
+    margin-top: 1.5em;
+    padding: 1em 0;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+    overflow: hidden;
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+section form:valid .submit {
+    opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
+}
+section form .submit::before {
+    content: '';
+    position: absolute;
+    height: 60px;
+    width: 0px;
+    border-radius: 50%;
+    background: var(--theme-light);
+    filter: blur(2em);
+    z-index: -2;
+    transition: width 0.3s , top 0s , left 0s;
+}
+section form .submit:hover::before {
+    width: 0%;
+}
+section form:valid .submit::before {
+    width: 100%;
+}
+section form .submit::after {
+    content: '';
+    position: absolute;
+    height: calc(100% - 6px);
+    width: calc(100% - 6px);
+    border-radius: calc(1em - 2px);
+    background: var(--theme-dark-transparent);
+    z-index: -1;
+}
+section form .confirmation {
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+    margin-top: 1em;
+}
+section form .confirmation p {
+    color: white;
+}
+section form .confirmation button {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.05em;
+    cursor: pointer;
+    color: var(--theme-light);
+}

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel</title>
+
+    <!-- For Icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
+    
+    <!-- Main Font Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- For Font : Lobster -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- For Font : Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins;
+            transition: all 0.3s;
+            --Light-color-Blue: #0172b2;
+            --Dark-color-Blue: #001645;
+            --Light-color-Gray: #888888;
+            --Dark-color-Gray: #2f2f2f;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #e8e8e8;
+        }
+        .button-Primary {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            height: 54px;
+            width: fit-content;
+            border-radius: 20px;
+            padding: 1em 1.5em;
+            text-wrap: nowrap;
+            border: none;
+            outline: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        .button-Primary:hover {
+            box-shadow: 0 0.3em 1em #00000050;
+        }
+        .phone {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: fit-content;
+            width: fit-content;
+            border-radius: 50px;
+            box-shadow: 0 1em 2em #00000050;
+        }
+        .phone .VolumeButton {
+            position: absolute;
+            top: 200px;
+            right: -10px;
+            height: 150px;
+            width: 10px;
+            border-radius: 0;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            background: white;
+        }
+        .phone .PowerButton {
+            position: absolute;
+            top: 370px;
+            right: -10px;
+            height: 90px;
+            width: 10px;
+            border-radius: 0;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            background: white;
+            cursor: default;
+        }
+        .PowerButton.PowerButtonActive {
+            cursor: pointer;
+        }
+        .PowerButton::before {
+            position: absolute;
+            top: 50%;
+            right: -40px;
+            transform: translateY(-50%);
+            content: 'Close App';
+            text-wrap: nowrap;
+            background: lightgray;
+            padding: 0.5em 1.5em;
+            border-radius: 0.8em;
+            border: 2px solid var(--Dark-color-Gray);
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+        .PowerButton.PowerButtonActive::before {
+            right: -140px;
+            filter: blur(0px);
+            opacity: 1;
+        }
+        .display {
+            height: fit-content;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            border-radius: 50px;
+            border: 10px solid white;
+            overflow: hidden;
+        }
+        .App {
+            display: flex;
+            align-items: center;
+            height: 932px;
+            width: 430px;
+            position: relative;
+        }
+        .App.ShowHomePage .LandingPage {
+            position: absolute;
+            z-index: 7;
+            height: 932px;
+            width: 430px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            background: linear-gradient(var(--Light-color-Blue),var(--Dark-color-Blue));
+            opacity: 0;
+            pointer-events: none;
+        }
+        .App.ShowLandingPage .LandingPage {
+            position: absolute;
+            z-index: 7;
+            height: 932px;
+            width: 430px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            background: linear-gradient(var(--Light-color-Blue),var(--Dark-color-Blue));
+            opacity: 1;
+            pointer-events: all;
+        }
+        .HeadingAndGlobe {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            cursor: default;
+        }
+        .HeadingAndGlobe .heading {
+            font-size: 44px;
+        }
+        .HeadingAndGlobe .fa-globe-asia {
+            height: 36px;
+            width: 36px;
+        }
+        .LandingPage button {
+            background-color: var(--Dark-color-Blue);
+            color: white;
+        }
+        .App.ShowLandingPage .HomePage {
+            position: absolute;
+            height: 932px;
+            width: 430px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            background: #ffffff;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .App.ShowHomePage .HomePage {
+            position: absolute;
+            height: 932px;
+            width: 430px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            background: #ffffff;
+            opacity: 1;
+            pointer-events: all;
+        }
+        .HomePage .ProfileInfo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: fit-content;
+            width: 375px;
+            padding: 2em 0 0;
+            cursor: default;
+        }
+        .ProfileInfo .greetings {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .greetings .Hello {
+            color: var(--Dark-color-Gray);
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .greetings .advice {
+            color: var(--Light-color-Gray);
+            letter-spacing: 1px;
+        }
+        .ProfileInfo .ProfilePhoto {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background: var(--Light-color-Gray);
+        }
+        .HomePage .SearchBar {
+            display: flex;
+            align-items: center;
+            height: 58px;
+            width: 375px;
+            border-radius: 20px;
+            padding: 0 30px;
+            border: 2px solid #d2d2d2;
+            color: var(--Light-color-Gray);
+            margin-top: 2.5em;
+            cursor: default;
+        }
+        .SearchBar .SearchBox {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+        .SearchBar .Seperator {
+            height: 50%;
+            width: 2px;
+            background: #d2d2d2;
+            margin-right: 2em;
+        }
+        .SearchButton {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: fit-content;
+            cursor: pointer;
+        }
+        .HomePage .PopularPlacesCover {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: fit-content;
+            width: 379px;
+            color: var(--Dark-color-Gray);
+            font-weight: bold;
+            margin-top: 2.5em;
+            cursor: default;
+        }
+        .PopularPlacesCover button {
+            background-color: transparent;
+            border: none;
+            font-size: 16px;
+            color: var(--Light-color-Gray);
+            cursor: pointer;
+        }
+        .HomePage .Categories {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            height: 84px;
+            width: 379px;
+            padding: 0 1em;
+            margin-top: 1.7em;
+            overflow-x: auto;
+        }
+        .Categories::-webkit-scrollbar {
+            display: none;
+        }
+        .Categories button {
+            color: var(--Light-color-Gray);
+            font-size: 16px;
+        }
+        .Categories button.Active {
+            display: flex;
+            align-items: center;
+            background: var(--Dark-color-Gray);
+            color: white;
+            font-size: 16px;
+        }
+        .HomePage .cardsWrapper {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            height: calc(405px + 2.4em);
+            width: 379px;
+            overflow: hidden;
+            overflow-x: scroll;
+            padding: 0em 1em 0.5em;
+            scroll-padding-left: 1em;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+        .cardsWrapper::-webkit-scrollbar {
+            height: 14px;
+            border-radius: 7px;
+            box-shadow: 0 0.2em 1em #00000050;
+            background-color: white;
+        }
+        .cardsWrapper::-webkit-scrollbar-thumb {
+            height: 14px;
+            border-radius: 7px;
+            background-color: var(--Dark-color-Blue);
+            border: 3px solid white;
+        }
+        .HomePage .cardsWrapper .Card {
+            position: relative;
+            height: 405px;
+            min-width: 270px;
+            border-radius: 30px;
+            overflow: hidden;
+            cursor: pointer;
+            scroll-snap-align: start;
+        }
+        .Card .Image {
+            height: 100%;
+            width: 100%;
+            background: var(--bg) center no-repeat;
+            background-size: cover;
+            z-index: 1;
+        }
+        .Card .LikeButton {
+            position: absolute;
+            top: 1.3em;
+            right: 1.3em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 4em;
+            width: 4em;
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            background: #00000050;
+            backdrop-filter: blur(20px);
+            z-index: 2;
+            cursor: pointer;
+        }
+        .LikeButton:hover {
+            box-shadow: 0 0.3em 1em #00000050;
+        }
+        .Card.CardFavourite .LikeButton {
+            scale: 1.1;
+        }
+        .LikeButton .fa-heart {
+            height: 1.5em;
+            width: 1.5em;
+            color: #ffffff60;
+            transition: 0.1s;
+        }
+        .LikeButton:active .fa-heart {
+            scale: 0.8;
+        }
+        .Card.CardFavourite .LikeButton .fa-heart {
+            color: rgb(206, 0, 79);
+        }
+        .Card .CardInfo {
+            position: absolute;
+            bottom: 2em;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 5px;
+            height: fit-content;
+            width: 100%;
+            border-radius: 0;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            padding: 1em 1.5em;
+            margin-left: 1.6em;
+            margin-right: 1.5em;
+            backdrop-filter: blur(20px);
+            z-index: 2;
+        }
+        .Card:hover .CardInfo {
+            box-shadow: 0 0.5em 1em #00000050;
+        }
+        .CardInfo .NameAndPlace {
+            display: flex;
+            align-items: end;
+            gap: 0.5ch;
+            height: fit-content;
+            width: fit-content;
+        }
+        .NameAndPlace .Name {
+            font-size: 18px;
+            color: white;
+            font-weight: 500;
+        }
+        .NameAndPlace .Place {
+            font-size: 15px;
+            color: #cac8c8;
+            font-weight: 600;
+            transform: translateY(-5%);
+        }
+        .LocationAndRatings {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: fit-content;
+            width: 100%;
+        }
+        .LocationAndRatings .Location {
+            font-size: 16px;
+            color: #cac8c8;
+        }
+        .LocationAndRatings .Ratings {
+            display: flex;
+            color: #cac8c8;
+            gap: 3px;
+            height: fit-content;
+            width: 80px;
+            font-size: 16px;
+        }
+        .Ratings .fa-star {
+            transform: translateY(5%);
+        }
+        .HomePage .NavigationBar {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: fit-content;
+            width: 100%;
+            padding: 0 2em 3em;
+        }
+        .NavigationBar .Cover {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: fit-content;
+            width: 100%;
+        }
+        .NavigationBar .Cover button {
+            height: 60px;
+            width: 100%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .NavigationBar .Cover button :is(.fa-home,.fa-clock,.fa-heart,.fa-user) {
+            scale: 1.6;
+            transform: translateY(25%);
+            color: var(--Dark-color-Blue);
+            transition: color 0.1s , scale 0.3s , transform 0.3s;
+        }
+        .NavigationBar.Home .Cover button .fa-home {
+            scale: 2;
+            transform: translateY(0%);
+            color: var(--Light-color-Blue);
+        }
+        .NavigationBar.History .Cover button .fa-clock {
+            scale: 2;
+            transform: translateY(0%);
+            color: var(--Light-color-Blue);
+        }
+        .NavigationBar.Favourites .Cover button .fa-heart {
+            scale: 2;
+            transform: translateY(0%);
+            color: var(--Light-color-Blue);
+        }
+        .NavigationBar.Profile .Cover button .fa-user {
+            scale: 2;
+            transform: translateY(0%);
+            color: var(--Light-color-Blue);
+        }
+        .NavigationBar .Cover .indicator {
+            position: absolute;
+            bottom: -10px;
+            height: 10px;
+            width: 25%;
+            border-radius: 5px;
+            background: var(--Light-color-Blue);
+        }
+        .NavigationBar.Home .Cover .indicator {
+            left: 0;
+        }
+        .NavigationBar.History .Cover .indicator {
+            left: 25%;
+        }
+        .NavigationBar.Favourites .Cover .indicator {
+            left: 50%;
+        }
+        .NavigationBar.Profile .Cover .indicator {
+            left: 75%;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone">
+        <div class="VolumeButton"></div>
+        <div class="PowerButton"></div>
+        <div class="display">
+            <div class="App ShowLandingPage">
+                <div class="LandingPage">
+                    <div class="HeadingAndGlobe">
+                        <div class="heading">Travel</div>
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <button class="Caption button-Primary appOpenButton">Find Your Dream Destination With Us</button>
+                </div>
+                <div class="HomePage">
+                    <div class="ProfileInfo">
+                        <div class="greetings">
+                            <div class="Hello">Hello Alice</div>
+                            <div class="advice">Explore The World</div>
+                        </div>
+                        <div class="ProfilePhoto"></div>
+                    </div>
+                    <div class="SearchBar">
+                        <div class="SearchBox">Search Places</div>
+                        <div class="Seperator"></div>
+                        <div class="SearchButton">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                    </div>
+                    <div class="PopularPlacesCover">
+                        <div class="text">Popular Places</div>
+                        <button>View all</button>
+                    </div>
+                    <div class="Categories">
+                        <button class="button-Primary button Active">Most Viewed</button>
+                        <button class="button-Primary button">Nearby</button>
+                        <button class="button-Primary button">Latest</button>
+                        <button class="button-Primary button">Visited</button>
+                    </div>
+                    <div class="cardsWrapper">
+                        <div class="Card" style='--bg: url("Mount Fuji.jpg");' title="Book tickets to Mount Fuji">
+                            <div class="Image"></div>
+                            <button class="LikeButton">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <div class="CardInfo">
+                                <div class="NameAndPlace">
+                                    <div class="Name">Mount Fuji,</div>
+                                    <div class="Place">Tokyo</div>
+                                </div>
+                                <div class="LocationAndRatings">
+                                    <div class="Location">Tokyo, Japan</div>
+                                    <div class="Ratings">
+                                        <i class="fas fa-star"></i>
+                                        4.8
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Card" style='--bg: url("Paris.jpg");' title="Book tickets to Paris">
+                            <div class="Image"></div>
+                            <button class="LikeButton">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <div class="CardInfo">
+                                <div class="NameAndPlace">
+                                    <div class="Name">Eiffel Tower,</div>
+                                    <div class="Place">Paris</div>
+                                </div>
+                                <div class="LocationAndRatings">
+                                    <div class="Location">France</div>
+                                    <div class="Ratings">
+                                        <i class="fas fa-star"></i>
+                                        5
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Card" style='--bg: url("Andes.jpg");' title="Book tickets for Andes">
+                            <div class="Image"></div>
+                            <button class="LikeButton">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <div class="CardInfo">
+                                <div class="NameAndPlace">
+                                    <div class="Name">Andes,</div>
+                                    <div class="Place">America</div>
+                                </div>
+                                <div class="LocationAndRatings">
+                                    <div class="Location">South America</div>
+                                    <div class="Ratings">
+                                        <i class="fas fa-star"></i>
+                                        4.8
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="NavigationBar Home">
+                        <div class="Cover">
+                            <button id="home" class="home">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                            </button>
+                            <button id="clock" class="clock">
+                                <i class="fas fa-clock"></i>
+                            </button>
+                            <button id="heart" class="heart">
+                                <i class="fa fa-heart" aria-hidden="true"></i>
+                            </button>
+                            <button id="profile" class="profile">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </button>
+                            <div class="indicator"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        const appOpenButton = document.querySelector('.appOpenButton');
+        const PowerButton = document.querySelector('.PowerButton');
+        const App = document.querySelector('.App');
+        appOpenButton.addEventListener("click" , () => {
+            App.classList.add('ShowHomePage');
+            App.classList.remove('ShowLandingPage');
+            PowerButton.classList.add('PowerButtonActive');
+        });
+        PowerButton.addEventListener("click" , () => {
+            App.classList.remove('ShowHomePage');
+            App.classList.add('ShowLandingPage');
+            PowerButton.classList.remove('PowerButtonActive');
+        })
+
+        const Categories = document.querySelector('.Categories'),
+        allTabs = Categories.querySelectorAll('.button');
+        let isDragging = false;
+        let handleIcons = (scrollValue) => {
+            let maxScrollWidth = Categories.scrollWidth - Categories.clientWidth;
+        }
+        allTabs.forEach(tab => {
+            tab.addEventListener("click" , () => {
+                Categories.querySelector('.Active').classList.remove('Active');
+                tab.classList.add('Active');
+            })
+        });
+        const dragging = (e) => {
+            if (!isDragging) return;
+            Categories.classList.add('Dragging');
+            Categories.scrollLeft -= e.movementX;
+            handleIcons(Categories.scrollLeft);
+        }
+        const dragStop = () => {
+            isDragging = false;
+            Categories.classList.remove('Dragging');
+        }
+        Categories.addEventListener("mousedown" , () => isDragging = true);
+        Categories.addEventListener("mousemove" , dragging);
+        document.addEventListener("mouseup" , dragStop);
+
+        const cardsWrapper = document.querySelector('.cardsWrapper');
+        const cardLikeButns = cardsWrapper.querySelectorAll('.Card button');
+        cardLikeButns.forEach(likeButton => {
+            likeButton.addEventListener("click" , () => {
+                likeButton.parentElement.classList.toggle('CardFavourite');
+            })
+        });
+
+        const NavigationBar = document.querySelector('.NavigationBar');
+        const homeNavBtn = NavigationBar.querySelector('.Cover #home');
+        const historyNavBtn = NavigationBar.querySelector('.Cover #clock');
+        const favouritesNavBtn = NavigationBar.querySelector('.Cover #heart');
+        const profileNavBtn = NavigationBar.querySelector('.Cover #profile');
+        homeNavBtn.onclick = () => {
+            NavigationBar.classList.add('Home');
+            NavigationBar.classList.remove('History');
+            NavigationBar.classList.remove('Favourites');
+            NavigationBar.classList.remove('Profile');
+        }
+        historyNavBtn.onclick = () => {
+            NavigationBar.classList.remove('Home');
+            NavigationBar.classList.add('History');
+            NavigationBar.classList.remove('Favourites');
+            NavigationBar.classList.remove('Profile');
+        }
+        favouritesNavBtn.onclick = () => {
+            NavigationBar.classList.remove('Home');
+            NavigationBar.classList.remove('History');
+            NavigationBar.classList.add('Favourites');
+            NavigationBar.classList.remove('Profile');
+        }
+        profileNavBtn.onclick = () => {
+            NavigationBar.classList.remove('Home');
+            NavigationBar.classList.remove('History');
+            NavigationBar.classList.remove('Favourites');
+            NavigationBar.classList.add('Profile');
+        }
+    </script>
+</body>
+</html>

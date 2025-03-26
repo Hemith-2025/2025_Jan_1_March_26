@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll animation | 2</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+            min-height: 100vh;
+        }
+        .hero {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            overflow: hidden;
+            object-fit: cover;
+            background: var(--bg) center no-repeat;
+            background-size: cover;
+            background-position-y: calc(var(--scrolled) / 5);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero" style="--bg: url('Images/Img-1.jpg');"></div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta dolores praesentium, eius nam dolore laborum, voluptate, quae labore possimus excepturi sequi ex et quas aspernatur libero numquam eveniet corrupti?
+    <script>
+        window.onscroll = () => {
+            let scrolled = window.scrollY;
+            document.documentElement.style.setProperty('--scrolled' , scrolled + "px");
+        }
+    </script>
+</body>
+</html>
