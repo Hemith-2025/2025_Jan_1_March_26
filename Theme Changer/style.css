@@ -1,0 +1,452 @@
+/* Variables (Root) */
+:root {
+    --text-shadow-1em: 0 0 1em;
+    --speed-fast: 0.1s;
+    --speed-medium: 0.3s;
+    --speed--slow: 0.6s;
+}
+
+/* Main */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins , sans-serif;
+    transition: all var(--speed--slow);
+}
+
+/* HTML */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Body */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--light-color);
+    padding-top: 99px;
+}
+body.default.light {
+    --theme-color: #007bff;
+    --light-color: #e2f1ff;
+    --dark-color: #13314d;
+}
+body.pink.light {
+    --theme-color: #f700ff;
+    --light-color: #ffe2f9;
+    --dark-color: #4d134a;
+}
+body.green.light {
+    --theme-color: #00e759;
+    --light-color: #e2ffe7;
+    --dark-color: #154d13;
+}
+body.red.light {
+    --theme-color: #ff2e2e;
+    --light-color: #ffe2e2;
+    --dark-color: #4d1313;
+}
+body.orange.light {
+    --theme-color: #ff9100;
+    --light-color: #fff1e2;
+    --dark-color: #4d2813;
+}
+body.default.dark {
+    --theme-color: #13314d;
+    --light-color: #e2f1ff;
+    --dark-color: #007bff;
+}
+body.pink.dark {
+    --theme-color: #4d134a;
+    --light-color: #ffe2f9;
+    --dark-color: #f700ff;
+}
+body.green.dark {
+    --theme-color: #154d13;
+    --light-color: #e2ffe7;
+    --dark-color: #00e759;
+}
+body.red.dark {
+    --theme-color: #4d1313;
+    --light-color: #ffe2e2;
+    --dark-color: #ff2e2e;
+}
+body.orange.dark {
+    --theme-color: #4d2813;
+    --light-color: #fff1e2;
+    --dark-color: #ff9100;
+}
+
+/* Scrollbar */
+body.light::-webkit-scrollbar {
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    background: var(--light-color);
+}
+body.light::-webkit-scrollbar-thumb {
+    background: var(--theme-color);
+    border-radius: 8px;
+    border: 3px solid var(--light-color);
+}
+body.dark::-webkit-scrollbar {
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    background: var(--theme-color);
+}
+body.dark::-webkit-scrollbar-thumb {
+    background: var(--light-color);
+    border-radius: 8px;
+    border: 3px solid var(--theme-color);
+}
+
+/* Anchor Tags */
+a {
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--theme-color);
+    height: fit-content;
+    width: 100%;
+    padding: 2em 5em;
+}
+.bodyScrolled header {
+    top: -100%;
+    transition: var(--speed--slow);
+}
+
+/* Header Logo */
+header .Logo {
+    font-size: 1.5em;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 3px;
+}
+header .Logo:hover {
+    text-shadow: var(--text-shadow-1em);
+}
+
+/* Header Navigation Buttons */
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+header nav a {
+    font-size: 1.2em;
+    color: white;
+    border-bottom: 3px solid transparent;
+}
+header nav a:hover {
+    text-shadow: var(--text-shadow-1em);
+    border-bottom: 3px solid;
+}
+
+/* Header Dropdown and HamburgerMenus */
+header .buttonsCover {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+}
+
+/* Header HamburgerMenu */
+header .buttonsCover .hamBurgerMenu {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    align-items: end;
+    height: fit-content;
+    width: fit-content;
+}
+.hamBurgerMenu .button {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 30px;
+    width: 40px;
+    cursor: pointer;
+}
+.hamBurgerMenu .button .Line {
+    position: absolute;
+    height: 5px;
+    width: 90%;
+    border-radius: 5px;
+    background: #e2f1ff;
+}
+.hamBurgerMenu .buttonActive .Line {
+    box-shadow: 0 0 1em var(--light-color);
+}
+.hamBurgerMenu .button .Line1 {
+    top: 0;
+}
+.hamBurgerMenu .button .Line2 {
+    width: 90%;
+}
+.hamBurgerMenu .button .Line3 {
+    bottom: 0;
+}
+.hamBurgerMenu .buttonActive .Line1 {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+.hamBurgerMenu .buttonActive .Line2 {
+    width: 0%;
+}
+.hamBurgerMenu .buttonActive .Line3 {
+    bottom: 50%;
+    transform: translateY(50%) rotate(45deg);
+}
+.hamBurgerMenu .menu {
+    position: absolute;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 1em;
+    padding: 1em;
+    background: var(--light-color);
+    opacity: 0;
+    pointer-events: none;
+}
+.hamBurgerMenu .menuActive {
+    opacity: 1;
+    pointer-events: all;
+}
+.hamBurgerMenu .menu a {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    color: var(--theme-color);
+    background: var(--light-clr);
+    height: fit-content;
+    width: 100%;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.2em;
+}
+.hamBurgerMenu .menu a:hover {
+    color: var(--light-color);
+    background: var(--theme-color);
+    text-shadow: var(--text-shadow-1em);
+}
+
+/* Header Dropdown */
+.buttonsCover .dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+}
+.dropdown .button {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    height: fit-content;
+    width: fit-content;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    color: var(--light-color);
+    background: var(--theme-color);
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: color var(--speed-fast) , background var(--speed-medium);
+}
+.dropdown .button.buttonActive {
+    color: var(--theme-color);
+    background: var(--light-color);
+    transition: color var(--speed-fast) , background var(--speed-medium);
+}
+.button .caret {
+    height: 0;
+    width: 0;
+    border-top: 10px solid var(--light-color);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    transition: border-top 0.3s , rotate var(--speed-fast);
+}
+.button.buttonActive .caret {
+    border-top: 10px solid var(--theme-color);
+    rotate: 90deg;
+}
+.dropdown .menu {
+    position: absolute;
+    top: 68px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 1em;
+    border-radius: 1em;
+    background: var(--light-color);
+    opacity: 0;
+    pointer-events: none;
+}
+.dropdown .menu.menuActive {
+    top: 58px;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.dropdown .menu button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    border: none;
+    outline: none;
+    color: var(--theme-color);
+    background: var(--light-color);
+    font-size: 1.2em;
+    text-wrap: nowrap;
+    cursor: pointer;
+}
+.dropdown .menu button:hover {
+    color: var(--light-color);
+    background: var(--theme-color);
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    height: 90vh;
+    width: 100%;
+    background: var(--background) fixed;
+    background-size: cover;
+    background-position-x: -0.5px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+.hero .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--light-color);
+    text-shadow: 0 0 0.8em #000000 , var(--text-shadow-1em);
+    letter-spacing: 3px;
+    font-weight: 800;
+    height: 100%;
+    width: 100%;
+    padding: 0 10em;
+    backdrop-filter: blur(var(--scrollPosition));
+}
+body.light .hero .cover {
+    background-color: #00000030;
+}
+body.dark .hero .cover {
+    background-color: #00000070;
+}
+
+/* Section */
+section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+body.light section {
+    color: var(--theme-color);
+    background: var(--light-color);
+}
+body.dark section {
+    color: var(--light-color);
+    background: var(--theme-color);
+}
+
+section#Home {
+    position: relative;
+    height: fit-content;
+    padding: 3em 5em;
+    overflow: hidden;
+}
+section#Home .decor {
+    position: absolute;
+    left: 0;
+    height: 170%;
+    width: 130px;
+    rotate: 30deg;
+    filter: blur(50px);
+    background: linear-gradient(to right , transparent , #c0c0c0 , transparent);
+    animation: animateDecorOfHomeSection 4s linear infinite;
+}
+@keyframes animateDecorOfHomeSection {
+    from {
+        left: 0;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    to {
+        left: 350%;
+        opacity: 0;
+    }
+}
+section#Home .cover { 
+    z-index: 1;
+}
+section#Home h1 {
+    height: fit-content;
+    width: 100%;
+    font-size: 3em;
+    transform-origin: center;
+}
+body.light section#Home h1 {
+    color: var(--theme-color);
+}
+body.dark section#Home h1 {
+    color: var(--dark-color);
+}
+body.light section#Home h3 {
+    height: fit-content;
+    width: 100%;
+    color: var(--dark-color);
+}
+body.dark section#Home h3 {
+    height: fit-content;
+    width: 100%;
+    color: var(--light-color);
+}
+
+/* Making Responsive */
+@media (max-width:768px) {
+
+    header nav {
+        display: none;
+    }
+
+    header .hamBurgerMenu {
+        display: flex;
+    }
+    
+}

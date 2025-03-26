@@ -1,0 +1,30 @@
+Colors : 
+body.default {
+    --theme-color: #007bff;
+    --light-color: #e2f1ff;
+    --dark-color: #13314d;
+}
+
+body.Pink {
+    --theme-color: #f700ff;
+    --light-color: #ffe2f9;
+    --dark-color: #4d134a;
+}
+
+body.Green {
+    --theme-color: #00e759;
+    --light-color: #e2ffe7;
+    --dark-color: #154d13;
+}
+
+body.Red {
+    --theme-color: #ff2e2e;
+    --light-color: #ffe2e2;
+    --dark-color: #4d1313;
+}
+
+body.Orange {
+    --theme-color: #ff9100;
+    --light-color: #fff1e2;
+    --dark-color: #4d2813;
+}

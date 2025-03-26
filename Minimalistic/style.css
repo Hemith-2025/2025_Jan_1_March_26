@@ -1,0 +1,203 @@
+:root {
+    --visible-1: #ffffff;
+    --visible-2: #000000;
+    --shadow: #00000050;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    transition: all 0.2s;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--visible-1);
+    overflow: visible;
+    overflow-x: hidden;
+}
+a { text-decoration: none; }
+header {
+    position: fixed;
+    top: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    padding: 0 1em;
+}
+header .headerCover {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    border-radius: 1em;
+    padding: 1em 3em;
+    box-shadow: 0 0.5em 1em var(--shadow);
+    backdrop-filter: blur(2em);
+}
+.headerCover .logo {
+    font-weight: 800;
+    letter-spacing: 0.5em;
+    font-size: 1.5em;
+}
+.headerCover nav {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1em;
+    font-weight: 500;
+}
+header .headerCover .buttons {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 2em;
+}
+.headerCover nav a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em 1em;
+    color: var(--visible-2);
+}
+.headerCover nav a .underline {
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+    background: var(--visible-2);
+    pointer-events: none;
+    bottom: 0em;
+    opacity: 0;
+    filter: blur(0.3em);
+}
+.headerCover nav a:hover .underline {
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+    background: var(--visible-2);
+    pointer-events: none;
+    bottom: 0.2em;
+    opacity: 1;
+    filter: blur(0em);
+}
+.headerCover nav button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em 1em;
+    border: none;
+    outline: none;
+    background: var(--visible-2);
+    color: var(--visible-1);
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+.hamburger {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hamburger button {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+.hamburger button .Line {
+    position: absolute;
+    right: 0;
+    height: 4px;
+    width: 100%;
+    border-radius: 4px;
+    background: var(--visible-2);
+}
+.hamburger button .Line1 {
+    top: 6px;
+    transform: rotate(0deg) translateY(0%);
+}
+.hamburger button .Line2 {
+    width: 70%;
+}
+.hamburger button .Line3 {
+    bottom: 6px;
+    transform: rotate(0deg) translateY(0%);
+}
+.hamburger button.active .Line1 {
+    top: calc(50% - 3px);
+    transform: rotate(45deg) translateY(50%);
+}
+.hamburger button.active .Line2 {
+    filter: blur(5px);
+    width: 0%;
+    right: 50%;
+}
+.hamburger button.active .Line3 {
+    bottom: calc(50% - 3px);
+    transform: rotate(-45deg) translateY(-50%);
+}
+.hamburger ul {
+    position: absolute;
+    right: 40px;
+    opacity: 0;
+    top: calc(56px + 1em);
+    padding: 1em;
+    border-radius: 0.5em;
+    background: var(--visible-1);
+    box-shadow: 0 0.5em 1em var(--shadow);
+    font-weight: 500;
+    filter: blur(20px);
+    pointer-events: none;
+}
+.hamburger ul.active {
+    opacity: 1;
+    right: 0px;
+    filter: blur(0px);
+    pointer-events: all;
+}
+.hamburger ul a {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 0.5em 0em;
+    color: var(--visible-2);
+}
+.hamburger ul a .underline {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 4px;
+    width: 0%;
+    border-radius: 4px;
+    background: var(--visible-2);
+    pointer-events: none;
+}
+.hamburger ul a:hover .underline {
+    width: 100%;
+}
+@media (max-width:860px) {
+    header .headerCover nav a {
+        display: none;
+    }
+    header .headerCover .hamburger {
+        display: flex;
+    }
+}
